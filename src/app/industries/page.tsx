@@ -1,11 +1,15 @@
-import PageIntro from "@/components/shared/PageIntro";
+import IndustriesHero from "@/components/industries/IndustriesHero";
+import IndustryShowcase from "@/components/industries/IndustryShowcase";
+import IndustryPerspective from "@/components/industries/IndustryPerspective";
+import IndustriesCTA from "@/components/industries/IndustriesCTA";
 
 export default function IndustriesPage() {
   return (
-    <PageIntro
-      eyebrow="Industries"
-      title="Technology solutions shaped around industry realities."
-      description="We combine technical expertise with an understanding of the operational, customer, security, and regulatory environments our clients work within."
-    />
+    <main>
+      <IndustriesHero />
+      <IndustryShowcase />
+      <IndustryPerspective />
+      <IndustriesCTA />
+    </main>
   );
 }
