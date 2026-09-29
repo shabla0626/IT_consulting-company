@@ -1,11 +1,21 @@
-import PageIntro from "@/components/shared/PageIntro";
+import CompanyHero from "@/components/company/CompanyHero";
+import WhoWeAre from "@/components/company/WhoWeAre";
+import HowWeWork from "@/components/company/HowWeWork";
+import WhatWeBelieve from "@/components/company/WhatWeBelieve";
+import WhyClientsWorkWithUs from "@/components/company/WhyClientsWorkWithUs";
+import CareersBridge from "@/components/company/CareersBridge";
+import CompanyCTA from "@/components/company/CompanyCTA";
 
 export default function CompanyPage() {
   return (
-    <PageIntro
-      eyebrow="Company"
-      title="Technology consulting built around people who deliver."
-      description="Learn about our company, our approach to consulting, how our teams work, and the principles behind the technology we build."
-    />
+    <main>
+      <CompanyHero />
+      <WhoWeAre />
+      <HowWeWork />
+      <WhatWeBelieve />
+      <WhyClientsWorkWithUs />
+      <CareersBridge />
+      <CompanyCTA />
+    </main>
   );
 }
