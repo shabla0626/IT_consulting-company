@@ -60,9 +60,10 @@ export default function Footer() {
           <div>
             <Link
               href="/"
-              className="text-2xl font-semibold tracking-tight text-white"
+              className="inline-flex items-center text-2xl font-semibold tracking-[-0.03em]"
             >
-              Nexora
+              <span className="text-white">Nex</span>
+              <span className="text-indigo-400">ora</span>
             </Link>
 
             <p className="mt-6 max-w-sm text-sm leading-7 text-neutral-400">
