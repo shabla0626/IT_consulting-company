@@ -3,126 +3,195 @@ import Link from "next/link";
 const solutions = [
   {
     number: "01",
-    title: "Software Engineering",
-    eyebrow: "Build",
+    eyebrow: "Software Engineering",
+    title: "Build and evolve software that supports the business.",
     description:
-      "Design and engineer modern applications, APIs, digital products, and platforms that are reliable, maintainable, and built to evolve.",
+      "From new digital products to modernization of existing systems, we help shape architecture, improve engineering foundations, and carry solutions through hands-on delivery.",
     capabilities: [
-      "Web & product engineering",
-      "Platform development",
-      "API architecture",
-      "Application modernization",
-      "Engineering enablement",
+      "Product Engineering",
+      "Application Modernization",
+      "APIs & Platforms",
+      "Engineering Quality",
     ],
     href: "/solutions/software-engineering",
-    gradient: "from-blue-500 to-cyan-400",
-    background: "from-blue-50 to-cyan-50",
-    text: "text-blue-600",
+    linkLabel: "Explore Software Engineering",
+    surface: "bg-cyan-50",
+    border: "border-cyan-100",
+    accent: "text-cyan-700",
+    marker: "bg-cyan-500",
   },
   {
     number: "02",
-    title: "AI & Data",
-    eyebrow: "Intelligence",
+    eyebrow: "AI & Data",
+    title: "Turn data and AI opportunities into dependable systems.",
     description:
-      "Turn fragmented information into useful data products, intelligent applications, analytics platforms, and production-ready AI systems.",
+      "We connect data foundations, analytics, applied AI, software engineering, evaluation, and operations so promising ideas can move toward practical production use.",
     capabilities: [
-      "Generative AI applications",
-      "Data engineering",
-      "Machine learning",
-      "Analytics platforms",
-      "AI operations",
+      "Data Platforms",
+      "Applied AI",
+      "Analytics",
+      "AI Operations",
     ],
     href: "/solutions/ai-data",
-    gradient: "from-violet-500 to-purple-400",
-    background: "from-violet-50 to-purple-50",
-    text: "text-violet-600",
+    linkLabel: "Explore AI & Data",
+    surface: "bg-violet-50",
+    border: "border-violet-100",
+    accent: "text-violet-700",
+    marker: "bg-violet-500",
   },
   {
     number: "03",
-    title: "Cloud & DevOps",
-    eyebrow: "Modernize",
+    eyebrow: "Cloud & DevOps",
+    title: "Create cloud foundations that make delivery easier to sustain.",
     description:
-      "Create scalable cloud foundations, automate delivery, strengthen reliability, and improve the experience of engineering teams.",
+      "We help teams modernize infrastructure, improve developer workflows, automate delivery, and strengthen reliability without treating cloud transformation as an isolated infrastructure exercise.",
     capabilities: [
-      "Cloud architecture",
-      "Platform engineering",
-      "CI/CD automation",
-      "Infrastructure as code",
-      "Observability & reliability",
+      "Cloud Modernization",
+      "Platform Engineering",
+      "DevOps",
+      "Reliability",
     ],
     href: "/solutions/cloud-devops",
-    gradient: "from-sky-500 to-teal-400",
-    background: "from-sky-50 to-teal-50",
-    text: "text-sky-600",
+    linkLabel: "Explore Cloud & DevOps",
+    surface: "bg-sky-50",
+    border: "border-sky-100",
+    accent: "text-sky-700",
+    marker: "bg-sky-500",
   },
   {
     number: "04",
-    title: "Cybersecurity",
-    eyebrow: "Protect",
+    eyebrow: "Cybersecurity",
+    title: "Build security into technology decisions and delivery.",
     description:
-      "Build security into applications, cloud platforms, identity systems, architecture, and engineering practices from the beginning.",
+      "Security works best when it is integrated across applications, cloud environments, identity, architecture, and engineering practices rather than added only at the end.",
     capabilities: [
-      "Application security",
-      "Cloud security",
-      "Identity & access",
-      "Security architecture",
+      "Application Security",
+      "Cloud Security",
+      "Identity",
       "DevSecOps",
     ],
     href: "/solutions/cybersecurity",
-    gradient: "from-emerald-500 to-green-400",
-    background: "from-emerald-50 to-green-50",
-    text: "text-emerald-600",
+    linkLabel: "Explore Cybersecurity",
+    surface: "bg-emerald-50",
+    border: "border-emerald-100",
+    accent: "text-emerald-700",
+    marker: "bg-emerald-500",
   },
 ];
 
 export default function SolutionShowcase() {
   return (
-    <section className="bg-neutral-50">
-      <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24 lg:px-8 lg:py-32">
-        <div className="mb-16 max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-600">What We Do</p>
-          <h2 className="mt-5 text-4xl font-semibold tracking-[-0.035em] text-neutral-950 sm:text-5xl">
-            One technology partner.
-            <span className="block text-neutral-400">Multiple disciplines.</span>
-          </h2>
+    <section className="bg-white py-20 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Section intro */}
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
+              Core Capabilities
+            </p>
+
+            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Deep expertise,
+              <span className="block text-slate-500">
+                connected across disciplines.
+              </span>
+            </h2>
+          </div>
+
+          <div className="max-w-2xl lg:justify-self-end">
+            <p className="text-base leading-7 text-slate-600">
+              Each capability can address a focused problem, but complex
+              technology programs often require several disciplines working
+              together around the same outcome.
+            </p>
+          </div>
         </div>
 
-        <div className="space-y-8">
-          {solutions.map((solution) => (
+        {/* Solution rows */}
+        <div className="mt-12 space-y-6 sm:mt-14 lg:mt-16 lg:space-y-8">
+          {solutions.map((solution, index) => (
             <article
-              key={solution.title}
-              className={`overflow-hidden rounded-[2rem] border border-neutral-200 bg-gradient-to-br ${solution.background}`}
+              key={solution.href}
+              className={`overflow-hidden rounded-3xl border ${solution.border} ${solution.surface}`}
             >
-              <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
-                <div className="p-7 sm:p-10 lg:p-12">
-                  <div className="flex items-center justify-between">
-                    <p className={`text-sm font-semibold ${solution.text}`}>{solution.eyebrow}</p>
-                    <p className="text-sm font-medium text-neutral-400">{solution.number}</p>
+              <div
+                className={`grid min-w-0 lg:grid-cols-2 ${
+                  index % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
+                }`}
+              >
+                {/* Main content */}
+                <div className="min-w-0 p-6 sm:p-8 lg:p-10 xl:p-12">
+                  <div className="flex items-center gap-3">
+                    <span
+                      className={`h-2 w-2 shrink-0 rounded-full ${solution.marker}`}
+                      aria-hidden="true"
+                    />
+
+                    <p
+                      className={`text-xs font-semibold uppercase tracking-[0.16em] sm:text-sm ${solution.accent}`}
+                    >
+                      {solution.eyebrow}
+                    </p>
                   </div>
 
-                  <div className={`mt-8 h-1.5 w-16 rounded-full bg-gradient-to-r ${solution.gradient}`} />
-
-                  <h3 className="mt-8 text-3xl font-semibold tracking-[-0.03em] text-neutral-950 sm:text-4xl">
+                  <h3 className="mt-5 max-w-xl text-2xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-3xl">
                     {solution.title}
                   </h3>
 
-                  <p className="mt-5 max-w-xl text-base leading-8 text-neutral-600 sm:text-lg">
+                  <p className="mt-5 max-w-xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
                     {solution.description}
                   </p>
 
-                  <Link href={solution.href} className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-neutral-950">
-                    Explore {solution.title}
-                    <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+                  <Link
+                    href={solution.href}
+                    className={`mt-7 inline-flex min-h-11 items-center text-sm font-semibold ${solution.accent}`}
+                  >
+                    {solution.linkLabel}
+
+                    <span
+                      className="ml-2 transition-transform duration-300"
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
                   </Link>
                 </div>
 
-                <div className="border-t border-neutral-200/80 bg-white/50 p-7 backdrop-blur sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-400">Capabilities</p>
-                  <div className="mt-6 divide-y divide-neutral-200">
-                    {solution.capabilities.map((capability, index) => (
-                      <div key={capability} className="flex items-center gap-5 py-4">
-                        <span className="text-xs font-medium text-neutral-400">{String(index + 1).padStart(2, "0")}</span>
-                        <span className="text-base font-medium text-neutral-800">{capability}</span>
+                {/* Capability panel */}
+                <div className="border-t border-slate-900/5 bg-white/60 p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10 xl:p-12">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                        Capability
+                      </p>
+
+                      <p className={`mt-2 text-sm font-semibold ${solution.accent}`}>
+                        {solution.number}
+                      </p>
+                    </div>
+
+                    <span
+                      className="text-3xl font-semibold tracking-tight text-slate-200 sm:text-4xl"
+                      aria-hidden="true"
+                    >
+                      {solution.number}
+                    </span>
+                  </div>
+
+                  <div className="mt-8 divide-y divide-slate-200">
+                    {solution.capabilities.map((capability) => (
+                      <div
+                        key={capability}
+                        className="flex min-h-14 items-center justify-between gap-4 py-4"
+                      >
+                        <span className="text-sm font-medium text-slate-700 sm:text-base">
+                          {capability}
+                        </span>
+
+                        <span
+                          className={`h-1.5 w-1.5 shrink-0 rounded-full ${solution.marker}`}
+                          aria-hidden="true"
+                        />
                       </div>
                     ))}
                   </div>
@@ -130,6 +199,42 @@ export default function SolutionShowcase() {
               </div>
             </article>
           ))}
+        </div>
+
+        {/* Cross-disciplinary note */}
+        <div className="mt-12 rounded-3xl border border-slate-200 bg-slate-50 p-7 sm:mt-14 sm:p-9 lg:mt-16 lg:p-12">
+          <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-center lg:gap-14">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-indigo-700 sm:text-sm">
+                Beyond Service Lines
+              </p>
+
+              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
+                Real technology problems cross boundaries.
+              </h3>
+            </div>
+
+            <div>
+              <p className="text-sm leading-7 text-slate-600 sm:text-base">
+                A cloud modernization effort can also involve software
+                architecture, security, data, developer experience, and
+                operating-model decisions. We shape the combination of
+                expertise around the work rather than forcing the work into a
+                single capability.
+              </p>
+
+              <Link
+                href="/contact"
+                className="mt-5 inline-flex min-h-11 items-center text-sm font-semibold text-indigo-700 transition hover:text-indigo-900"
+              >
+                Discuss your technology challenge
+
+                <span className="ml-2" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

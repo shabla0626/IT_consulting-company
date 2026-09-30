@@ -1,33 +1,50 @@
 import Link from "next/link";
 
-type Item = {
-  title: string;
-  description: string;
-};
+type DetailItem =
+  | string
+  | {
+      title: string;
+      description: string;
+    };
 
 type SolutionDetailProps = {
   eyebrow: string;
   title: string;
   highlightedTitle: string;
   description: string;
+
   accentText: string;
   accentBg: string;
   accentSoftBg: string;
   accentDot: string;
+
   capabilityEyebrow: string;
   capabilityTitle: string;
   capabilityDescription: string;
-  capabilities: Item[];
+  capabilities: DetailItem[];
+
   approachEyebrow: string;
   approachTitle: string;
   approachDescription: string;
-  approach: Item[];
+  approach: DetailItem[];
+
   technologyTitle: string;
   technologyAreas: string[];
+
   ctaEyebrow: string;
   ctaTitle: string;
   ctaDescription: string;
+
+  [key: string]: unknown;
 };
+
+function getItemTitle(item: DetailItem) {
+  return typeof item === "string" ? item : item.title;
+}
+
+function getItemDescription(item: DetailItem) {
+  return typeof item === "string" ? null : item.description;
+}
 
 export default function SolutionDetail({
   eyebrow,
@@ -54,100 +71,211 @@ export default function SolutionDetail({
 }: SolutionDetailProps) {
   return (
     <main>
-      <section className="relative overflow-hidden bg-white">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-slate-950 text-white">
         <div
-          className={`pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full ${accentSoftBg} blur-3xl`}
+          className={`pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full opacity-10 blur-3xl sm:h-96 sm:w-96 ${accentBg}`}
           aria-hidden="true"
         />
 
-        <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-28 lg:px-8 lg:py-36">
-          <div className="max-w-5xl">
-            <div className="flex items-center gap-3">
-              <span className={`h-px w-10 ${accentBg}`} />
-              <p className={`text-sm font-semibold uppercase tracking-[0.18em] ${accentText}`}>{eyebrow}</p>
+        <div className="relative mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-8 lg:py-28">
+          <div className="grid gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-end lg:gap-20">
+            <div className="min-w-0">
+              <div className="flex items-center gap-3">
+                <span
+                  className={`h-2 w-2 shrink-0 rounded-full ${accentDot}`}
+                  aria-hidden="true"
+                />
+
+                <p
+                  className={`text-xs font-semibold uppercase tracking-[0.2em] sm:text-sm ${accentText}`}
+                >
+                  {eyebrow}
+                </p>
+              </div>
+
+              <h1 className="mt-5 max-w-4xl text-[2.5rem] font-semibold leading-[1.05] tracking-[-0.035em] text-white sm:text-5xl sm:leading-[1.04] lg:text-6xl xl:text-7xl">
+                {title}
+
+                <span className="block text-slate-400">
+                  {highlightedTitle}
+                </span>
+              </h1>
             </div>
 
-            <h1 className="mt-8 text-5xl font-semibold leading-[0.98] tracking-[-0.045em] text-neutral-950 sm:text-6xl lg:text-7xl">
-              {title}
-              <span className={`mt-2 block ${accentText}`}>{highlightedTitle}</span>
-            </h1>
+            <div className="min-w-0 lg:pb-1">
+              <p className="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
+                {description}
+              </p>
 
-            <p className="mt-8 max-w-3xl text-lg leading-8 text-neutral-600 sm:text-xl">{description}</p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link
+                  href="/contact"
+                  className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-white/20 sm:w-auto"
+                >
+                  Talk to an Expert
+                  <span className="ml-2" aria-hidden="true">
+                    →
+                  </span>
+                </Link>
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <Link href="/contact" className="inline-flex items-center justify-center rounded-full bg-neutral-950 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-neutral-800">
-                Discuss Your Project
-              </Link>
-              <Link href="/work" className="group inline-flex items-center justify-center gap-2 rounded-full border border-neutral-300 px-7 py-3.5 text-sm font-semibold text-neutral-950 transition hover:border-neutral-950">
-                View Our Work
-                <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
-              </Link>
+                <Link
+                  href="/work"
+                  className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10 focus:outline-none focus:ring-4 focus:ring-white/10 sm:w-auto"
+                >
+                  Explore Our Work
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-neutral-50">
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24 lg:px-8 lg:py-32">
-          <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
+      {/* Capabilities */}
+      <section className="bg-white py-20 sm:py-24 lg:py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:gap-16">
             <div>
-              <p className={`text-sm font-semibold uppercase tracking-[0.18em] ${accentText}`}>{capabilityEyebrow}</p>
-              <h2 className="mt-5 max-w-xl text-4xl font-semibold tracking-[-0.035em] text-neutral-950 sm:text-5xl">{capabilityTitle}</h2>
-              <p className="mt-6 max-w-lg text-lg leading-8 text-neutral-600">{capabilityDescription}</p>
+              <p
+                className={`text-xs font-semibold uppercase tracking-[0.2em] sm:text-sm ${accentText}`}
+              >
+                {capabilityEyebrow}
+              </p>
+
+              <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+                {capabilityTitle}
+              </h2>
             </div>
 
-            <div className="grid gap-px overflow-hidden rounded-3xl bg-neutral-200 sm:grid-cols-2">
-              {capabilities.map((capability, index) => (
-                <article key={capability.title} className="bg-white p-7 sm:p-8">
-                  <p className={`text-sm font-medium ${accentText}`}>{String(index + 1).padStart(2, "0")}</p>
-                  <h3 className="mt-8 text-xl font-semibold tracking-tight text-neutral-950">{capability.title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-neutral-600">{capability.description}</p>
+            <p className="max-w-2xl text-base leading-7 text-slate-600 lg:justify-self-end">
+              {capabilityDescription}
+            </p>
+          </div>
+
+          <div className="mt-12 overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 sm:mt-14 lg:mt-16">
+            {capabilities.map((capability, index) => {
+              const description = getItemDescription(capability);
+
+              return (
+                <article
+                  key={`${getItemTitle(capability)}-${index}`}
+                  className={`grid min-w-0 gap-4 p-6 sm:p-7 md:grid-cols-[60px_1fr] lg:grid-cols-[80px_300px_1fr] lg:gap-8 lg:p-8 ${
+                    index !== capabilities.length - 1
+                      ? "border-b border-slate-200"
+                      : ""
+                  }`}
+                >
+                  <span
+                    className={`text-xs font-semibold tracking-[0.18em] sm:text-sm ${accentText}`}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <h3 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
+                    {getItemTitle(capability)}
+                  </h3>
+
+                  {description && (
+                    <p className="text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+                      {description}
+                    </p>
+                  )}
                 </article>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="bg-neutral-950 text-white">
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24 lg:px-8 lg:py-32">
-          <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
+      {/* Approach */}
+      <section className="bg-slate-50 py-20 sm:py-24 lg:py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:gap-16">
             <div>
-              <p className={`text-sm font-semibold uppercase tracking-[0.18em] ${accentText}`}>{approachEyebrow}</p>
-              <h2 className="mt-5 max-w-xl text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">{approachTitle}</h2>
-              <p className="mt-6 max-w-lg text-lg leading-8 text-neutral-400">{approachDescription}</p>
+              <p
+                className={`text-xs font-semibold uppercase tracking-[0.2em] sm:text-sm ${accentText}`}
+              >
+                {approachEyebrow}
+              </p>
+
+              <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+                {approachTitle}
+              </h2>
             </div>
 
-            <div className="border-t border-white/10">
-              {approach.map((item, index) => (
-                <div key={item.title} className="grid gap-4 border-b border-white/10 py-7 sm:grid-cols-[70px_1fr] lg:py-8">
-                  <span className={`text-sm font-medium ${accentText}`}>{String(index + 1).padStart(2, "0")}</span>
-                  <div>
-                    <h3 className="text-xl font-semibold sm:text-2xl">{item.title}</h3>
-                    <p className="mt-3 max-w-xl text-sm leading-7 text-neutral-400 sm:text-base">{item.description}</p>
+            <p className="max-w-2xl text-base leading-7 text-slate-600 lg:justify-self-end">
+              {approachDescription}
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-5 sm:mt-14 md:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6">
+            {approach.map((item, index) => {
+              const description = getItemDescription(item);
+
+              return (
+                <article
+                  key={`${getItemTitle(item)}-${index}`}
+                  className="min-w-0 rounded-3xl border border-slate-200 bg-white p-6 sm:p-7"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <span
+                      className={`text-xs font-semibold tracking-[0.18em] ${accentText}`}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    <span
+                      className={`h-2 w-2 shrink-0 rounded-full ${accentDot}`}
+                      aria-hidden="true"
+                    />
                   </div>
-                </div>
-              ))}
-            </div>
+
+                  <h3 className="mt-6 text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
+                    {getItemTitle(item)}
+                  </h3>
+
+                  {description && (
+                    <p className="mt-3 text-sm leading-6 text-slate-600">
+                      {description}
+                    </p>
+                  )}
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24 lg:px-8 lg:py-32">
-          <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
+      {/* Technology areas */}
+      <section className="bg-white py-20 sm:py-24 lg:py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start lg:gap-20">
             <div>
-              <p className={`text-sm font-semibold uppercase tracking-[0.18em] ${accentText}`}>Technology Areas</p>
-              <h2 className="mt-5 text-4xl font-semibold tracking-[-0.035em] text-neutral-950 sm:text-5xl">{technologyTitle}</h2>
+              <p
+                className={`text-xs font-semibold uppercase tracking-[0.2em] sm:text-sm ${accentText}`}
+              >
+                Technology Areas
+              </p>
+
+              <h2 className="mt-4 max-w-lg text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                {technologyTitle}
+              </h2>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              {technologyAreas.map((area) => (
-                <div key={area} className="rounded-2xl border border-neutral-200 bg-neutral-50 p-5">
-                  <div className="flex items-center gap-3">
-                    <span className={`h-2 w-2 rounded-full ${accentDot}`} />
-                    <span className="font-medium text-neutral-800">{area}</span>
-                  </div>
+              {technologyAreas.map((technology) => (
+                <div
+                  key={technology}
+                  className={`flex min-h-14 min-w-0 items-center gap-3 rounded-2xl border border-slate-200 p-4 sm:p-5 ${accentSoftBg}`}
+                >
+                  <span
+                    className={`h-2 w-2 shrink-0 rounded-full ${accentDot}`}
+                    aria-hidden="true"
+                  />
+
+                  <span className="min-w-0 text-sm font-semibold text-slate-800 sm:text-base">
+                    {technology}
+                  </span>
                 </div>
               ))}
             </div>
@@ -155,19 +283,42 @@ export default function SolutionDetail({
         </div>
       </section>
 
-      <section className={`${accentBg} text-white`}>
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-          <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+      {/* CTA */}
+      <section className="bg-slate-950 py-20 text-white sm:py-24 lg:py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-20">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/70">{ctaEyebrow}</p>
-              <h2 className="mt-5 max-w-3xl text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">{ctaTitle}</h2>
+              <p
+                className={`text-xs font-semibold uppercase tracking-[0.2em] sm:text-sm ${accentText}`}
+              >
+                {ctaEyebrow}
+              </p>
+
+              <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
+                {ctaTitle}
+              </h2>
+
+              <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300">
+                {ctaDescription}
+              </p>
             </div>
 
-            <div>
-              <p className="max-w-md leading-7 text-white/80">{ctaDescription}</p>
-              <Link href="/contact" className="group mt-8 inline-flex items-center gap-3 rounded-full bg-neutral-950 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-neutral-800">
-                Discuss Your Project
-                <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:justify-end">
+              <Link
+                href="/contact"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-white/20 sm:w-auto"
+              >
+                Talk to an Expert
+                <span className="ml-2" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+
+              <Link
+                href="/solutions"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10 focus:outline-none focus:ring-4 focus:ring-white/10 sm:w-auto"
+              >
+                All Solutions
               </Link>
             </div>
           </div>

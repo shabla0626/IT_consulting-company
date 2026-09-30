@@ -1,141 +1,98 @@
 import Link from "next/link";
 
-const roles = [
+const careerAreas = [
   {
-    title: "Senior Software Engineer",
-    team: "Engineering",
-    location: "Location to be confirmed",
-    workType: "Working arrangement to be confirmed",
-    employmentType: "Full-time",
+    title: "Software Engineering",
     description:
-      "Work across modern applications, APIs, platforms, and engineering foundations while contributing to architecture, quality, delivery, and long-term maintainability.",
-    href: "/careers/jobs/senior-software-engineer",
+      "Product engineering, applications, platforms, APIs, architecture, and modernization.",
   },
   {
-    title: "Cloud Platform Engineer",
-    team: "Cloud",
-    location: "Location to be confirmed",
-    workType: "Working arrangement to be confirmed",
-    employmentType: "Full-time",
+    title: "AI & Data",
     description:
-      "Build cloud foundations, infrastructure automation, CI/CD capabilities, observability, and platform services that help engineering teams deliver reliably.",
-    href: "/careers/jobs/cloud-platform-engineer",
+      "Data engineering, applied AI, machine learning, analytics, and production AI systems.",
   },
   {
-    title: "Data & AI Engineer",
-    team: "Data & AI",
-    location: "Location to be confirmed",
-    workType: "Working arrangement to be confirmed",
-    employmentType: "Full-time",
+    title: "Cloud & Platform",
     description:
-      "Develop data pipelines, analytics foundations, AI-enabled applications, evaluation workflows, and production-ready data and AI systems.",
-    href: "/careers/jobs/data-ai-engineer",
+      "Cloud engineering, platform engineering, DevOps, infrastructure, observability, and reliability.",
+  },
+  {
+    title: "Cybersecurity",
+    description:
+      "Application security, cloud security, identity, architecture, automation, and security engineering.",
   },
 ];
 
 export default function FeaturedRoles() {
   return (
-    <section className="bg-white py-24 sm:py-28">
+    <section className="bg-white py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-violet-700">
-              Open Opportunities
+        <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:gap-16">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-violet-700 sm:text-sm">
+              Open Roles
             </p>
 
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-              Find work that matches
+            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Find the role
               <span className="block text-slate-500">
-                where you want to grow.
+                that fits your next step.
               </span>
             </h2>
+          </div>
 
-            <p className="mt-6 max-w-2xl text-base leading-7 text-slate-600">
-              Explore opportunities across engineering, cloud, data, AI,
-              security, design, and consulting. Each job page should clearly
-              explain the role, expectations, working arrangement, and hiring
-              process before you apply.
+          <div className="max-w-2xl lg:justify-self-end">
+            <p className="text-base leading-7 text-slate-600">
+              Current vacancies, locations, employment types, experience
+              levels, responsibilities, and requirements belong in the live
+              Jobs Explorer rather than being duplicated here.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-12 grid gap-5 sm:mt-14 md:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6">
+          {careerAreas.map((area, index) => (
+            <article
+              key={area.title}
+              className="rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:p-7"
+            >
+              <span className="text-xs font-semibold tracking-[0.18em] text-violet-700">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+
+              <h3 className="mt-6 text-xl font-semibold tracking-tight text-slate-950">
+                {area.title}
+              </h3>
+
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                {area.description}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-8 rounded-3xl bg-violet-700 p-6 text-white sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-8">
+          <div>
+            <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
+              Ready to see current opportunities?
+            </h3>
+
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-violet-100 sm:text-base">
+              Browse the live role list and filter opportunities by the details
+              that matter to you.
             </p>
           </div>
 
           <Link
             href="/careers/jobs"
-            className="inline-flex w-fit items-center rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+            className="mt-6 inline-flex min-h-12 w-full shrink-0 items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-violet-800 transition hover:bg-violet-50 focus:outline-none focus:ring-4 focus:ring-white/30 sm:mt-0 sm:w-auto"
           >
-            View All Open Roles
+            View Open Roles
+
             <span className="ml-2" aria-hidden="true">
               →
             </span>
           </Link>
-        </div>
-
-        <div className="mt-14 overflow-hidden rounded-3xl border border-slate-200">
-          {roles.map((role, index) => (
-            <Link
-              key={role.title}
-              href={role.href}
-              className={`group block bg-white p-7 transition hover:bg-slate-50 sm:p-8 ${
-                index !== roles.length - 1
-                  ? "border-b border-slate-200"
-                  : ""
-              }`}
-            >
-              <div className="grid gap-6 lg:grid-cols-[1fr_220px_auto] lg:items-center">
-                <div>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="text-xs font-semibold uppercase tracking-[0.16em] text-violet-700">
-                      {role.team}
-                    </span>
-
-                    <span className="h-1 w-1 rounded-full bg-slate-300" />
-
-                    <span className="text-xs font-medium text-slate-500">
-                      {role.employmentType}
-                    </span>
-                  </div>
-
-                  <h3 className="mt-3 text-xl font-semibold tracking-tight text-slate-950">
-                    {role.title}
-                  </h3>
-
-                  <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">
-                    {role.description}
-                  </p>
-                </div>
-
-                <div className="space-y-2">
-                  <p className="text-sm font-medium text-slate-800">
-                    {role.location}
-                  </p>
-
-                  <p className="text-sm text-slate-500">
-                    {role.workType}
-                  </p>
-                </div>
-
-                <div className="flex justify-start lg:justify-end">
-                  <span
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition group-hover:border-slate-950 group-hover:bg-slate-950 group-hover:text-white"
-                    aria-hidden="true"
-                  >
-                    →
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 px-6 py-5">
-          <p className="text-sm leading-6 text-slate-600">
-            <span className="font-semibold text-slate-900">
-              Current development note:
-            </span>{" "}
-            These roles are representative frontend content. Final openings,
-            locations, compensation, working arrangements, and employment
-            details should come from the real recruiting data source once the
-            jobs backend is implemented.
-          </p>
         </div>
       </div>
     </section>

@@ -1,6 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import {
+  useState,
+  type FormEvent,
+  type ReactNode,
+} from "react";
 
 const interestOptions = [
   "Software Engineering",
@@ -40,9 +44,12 @@ const budgetRanges = [
 ];
 
 export default function ContactForm() {
-  const [validated, setValidated] = useState(false);
+  const [validated, setValidated] =
+    useState(false);
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(
+    event: FormEvent<HTMLFormElement>,
+  ) {
     event.preventDefault();
 
     setValidated(true);
@@ -58,13 +65,13 @@ export default function ContactForm() {
   return (
     <section
       id="contact-form"
-      className="scroll-mt-24 bg-slate-50 py-24 sm:py-28"
+      className="scroll-mt-24 bg-slate-50 py-20 sm:py-24 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-14 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-start lg:gap-16 xl:gap-20">
           {/* Introduction */}
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-700">
+          <div className="min-w-0 lg:sticky lg:top-28">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
               Start a Conversation
             </p>
 
@@ -75,13 +82,13 @@ export default function ContactForm() {
               </span>
             </h2>
 
-            <p className="mt-6 max-w-xl text-base leading-7 text-slate-600">
+            <p className="mt-5 max-w-xl text-base leading-7 text-slate-600 sm:mt-6">
               You do not need to arrive with a complete specification. Tell us
               what you are trying to achieve, what is getting in the way, and
               any important constraints or timing considerations.
             </p>
 
-            <div className="mt-10 border-t border-slate-200 pt-8">
+            <div className="mt-8 border-t border-slate-200 pt-7 sm:mt-10 sm:pt-8">
               <p className="text-sm font-semibold text-slate-950">
                 Helpful context can include:
               </p>
@@ -96,20 +103,22 @@ export default function ContactForm() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="grid grid-cols-[14px_1fr] gap-3 text-sm leading-6 text-slate-600"
+                    className="grid grid-cols-[14px_minmax(0,1fr)] gap-3 text-sm leading-6 text-slate-600"
                   >
                     <span
                       className="mt-[9px] h-1.5 w-1.5 rounded-full bg-indigo-600"
                       aria-hidden="true"
                     />
 
-                    <span>{item}</span>
+                    <span className="min-w-0">
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="mt-10 rounded-3xl bg-slate-950 p-7 text-white">
+            <div className="mt-8 rounded-3xl bg-slate-950 p-6 text-white sm:mt-10 sm:p-7">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-indigo-300">
                 No perfect brief required
               </p>
@@ -123,11 +132,11 @@ export default function ContactForm() {
           </div>
 
           {/* Form */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm sm:p-9 lg:p-10">
+          <div className="min-w-0 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-7 md:p-8 lg:p-9 xl:p-10">
             {validated && (
               <div
                 role="status"
-                className="mb-8 rounded-2xl border border-indigo-200 bg-indigo-50 p-5"
+                className="mb-7 rounded-2xl border border-indigo-200 bg-indigo-50 p-5 sm:mb-8"
               >
                 <p className="font-semibold text-slate-950">
                   Inquiry details validated.
@@ -238,18 +247,14 @@ export default function ContactForm() {
                 title="The challenge"
                 description="Describe the problem, opportunity, or outcome you want to discuss."
               >
-                <div>
+                <div className="min-w-0">
                   <label
                     htmlFor="message"
-                    className="text-sm font-semibold text-slate-900"
+                    className="block text-sm font-semibold text-slate-900"
                   >
                     Tell us about your project or challenge
-                    <span
-                      className="ml-1 text-indigo-700"
-                      aria-hidden="true"
-                    >
-                      *
-                    </span>
+
+                    <RequiredMark />
                   </label>
 
                   <textarea
@@ -259,7 +264,7 @@ export default function ContactForm() {
                     required
                     maxLength={5000}
                     placeholder="What are you trying to achieve? What exists today? Where are the main challenges or constraints?"
-                    className="mt-3 w-full resize-y rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-sm leading-6 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
+                    className="mt-3 min-h-52 w-full resize-y rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-base leading-7 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
                   />
 
                   <p className="mt-2 text-xs leading-5 text-slate-500">
@@ -277,16 +282,16 @@ export default function ContactForm() {
                 title="Before continuing"
                 description="Confirm that we may use the information provided to respond to your inquiry."
               >
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:p-6">
                   <label className="flex cursor-pointer items-start gap-4">
                     <input
                       type="checkbox"
                       name="contactConsent"
                       required
-                      className="mt-1 h-4 w-4 rounded border-slate-300 text-indigo-700 focus:ring-indigo-500"
+                      className="mt-0.5 h-5 w-5 shrink-0 rounded border-slate-300 text-indigo-700 focus:ring-indigo-500"
                     />
 
-                    <span className="text-sm leading-6 text-slate-600">
+                    <span className="min-w-0 text-sm leading-6 text-slate-600">
                       I understand that the information I provide will be used
                       to respond to this inquiry. Final privacy and data
                       retention language must be approved before this form is
@@ -297,9 +302,9 @@ export default function ContactForm() {
               </FormGroup>
 
               {/* Action */}
-              <div className="mt-10 rounded-3xl bg-slate-950 p-7 text-white">
-                <div className="grid gap-7 sm:grid-cols-[1fr_auto] sm:items-center">
-                  <div>
+              <div className="mt-8 rounded-3xl bg-slate-950 p-6 text-white sm:mt-10 sm:p-7">
+                <div className="grid gap-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-7">
+                  <div className="min-w-0">
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-indigo-300">
                       Ready?
                     </p>
@@ -312,10 +317,14 @@ export default function ContactForm() {
 
                   <button
                     type="submit"
-                    className="inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200 sm:w-auto"
+                    className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-white/20 sm:w-auto"
                   >
                     Validate Inquiry
-                    <span className="ml-2" aria-hidden="true">
+
+                    <span
+                      className="ml-2"
+                      aria-hidden="true"
+                    >
                       →
                     </span>
                   </button>
@@ -333,7 +342,7 @@ type FormGroupProps = {
   number: string;
   title: string;
   description: string;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 function FormGroup({
@@ -345,30 +354,55 @@ function FormGroup({
   return (
     <section>
       <div className="mb-6">
-        <div className="flex items-start gap-4">
+        <div className="grid grid-cols-[34px_minmax(0,1fr)] gap-3 sm:gap-4">
           <span className="pt-1 text-xs font-semibold tracking-[0.16em] text-indigo-700">
             {number}
           </span>
 
-          <div>
+          <div className="min-w-0">
             <h3 className="text-lg font-semibold tracking-tight text-slate-950">
               {title}
             </h3>
 
-            <p className="mt-1 text-sm leading-6 text-slate-500">
+            <p className="mt-1 max-w-2xl text-sm leading-6 text-slate-500">
               {description}
             </p>
           </div>
         </div>
       </div>
 
-      <div>{children}</div>
+      <div className="min-w-0">
+        {children}
+      </div>
     </section>
   );
 }
 
 function Divider() {
-  return <div className="my-9 border-t border-slate-200" />;
+  return (
+    <div
+      className="my-8 border-t border-slate-200 sm:my-9"
+      aria-hidden="true"
+    />
+  );
+}
+
+function RequiredMark() {
+  return (
+    <>
+      <span
+        className="ml-1 text-indigo-700"
+        aria-hidden="true"
+      >
+        *
+      </span>
+
+      <span className="sr-only">
+        {" "}
+        required
+      </span>
+    </>
+  );
 }
 
 type TextFieldProps = {
@@ -391,21 +425,14 @@ function TextField({
   required = false,
 }: TextFieldProps) {
   return (
-    <div>
+    <div className="min-w-0">
       <label
         htmlFor={id}
-        className="text-sm font-semibold text-slate-900"
+        className="block text-sm font-semibold text-slate-900"
       >
         {label}
 
-        {required && (
-          <span
-            className="ml-1 text-indigo-700"
-            aria-hidden="true"
-          >
-            *
-          </span>
-        )}
+        {required && <RequiredMark />}
       </label>
 
       <input
@@ -415,7 +442,7 @@ function TextField({
         placeholder={placeholder}
         autoComplete={autoComplete}
         required={required}
-        className="mt-3 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
+        className="mt-3 min-h-12 w-full min-w-0 rounded-2xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
       />
     </div>
   );
@@ -439,21 +466,14 @@ function SelectField({
   required = false,
 }: SelectFieldProps) {
   return (
-    <div>
+    <div className="min-w-0">
       <label
         htmlFor={id}
-        className="text-sm font-semibold text-slate-900"
+        className="block text-sm font-semibold text-slate-900"
       >
         {label}
 
-        {required && (
-          <span
-            className="ml-1 text-indigo-700"
-            aria-hidden="true"
-          >
-            *
-          </span>
-        )}
+        {required && <RequiredMark />}
       </label>
 
       <select
@@ -461,14 +481,20 @@ function SelectField({
         name={name}
         required={required}
         defaultValue=""
-        className="mt-3 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-sm text-slate-800 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
+        className="mt-3 min-h-12 w-full min-w-0 rounded-2xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-800 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
       >
-        <option value="" disabled={required}>
+        <option
+          value=""
+          disabled={required}
+        >
           {placeholder}
         </option>
 
         {options.map((option) => (
-          <option key={option} value={option}>
+          <option
+            key={option}
+            value={option}
+          >
             {option}
           </option>
         ))}

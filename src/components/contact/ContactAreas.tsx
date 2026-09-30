@@ -57,11 +57,11 @@ const areas = [
 
 export default function ContactAreas() {
   return (
-    <section className="bg-white py-24 sm:py-28">
+    <section className="bg-white py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-700">
+        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-16 xl:gap-20">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
               What Can We Help With?
             </p>
 
@@ -72,7 +72,7 @@ export default function ContactAreas() {
               </span>
             </h2>
 
-            <p className="mt-6 max-w-xl text-base leading-7 text-slate-600">
+            <p className="mt-5 max-w-xl text-base leading-7 text-slate-600 sm:mt-6">
               Technology problems rarely fit neatly into one category. A cloud
               initiative may involve software architecture. An AI project may
               depend on data foundations, security, and platform engineering.
@@ -84,23 +84,23 @@ export default function ContactAreas() {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50">
+          <div className="min-w-0 overflow-hidden rounded-3xl border border-slate-200 bg-slate-50">
             {areas.map((area, index) => (
               <article
                 key={area.title}
-                className={`group p-7 transition duration-300 hover:bg-white sm:p-8 ${
+                className={`group p-6 transition duration-300 hover:bg-white sm:p-7 md:p-8 ${
                   index !== areas.length - 1
                     ? "border-b border-slate-200"
                     : ""
                 }`}
               >
-                <div className="grid gap-6 md:grid-cols-[72px_1fr_auto] md:items-start">
-                  <span className="text-sm font-semibold tracking-[0.18em] text-indigo-700">
+                <div className="grid min-w-0 gap-5 md:grid-cols-[56px_minmax(0,1fr)_44px] md:items-start md:gap-6">
+                  <span className="text-xs font-semibold tracking-[0.18em] text-indigo-700 sm:text-sm">
                     {area.number}
                   </span>
 
-                  <div>
-                    <h3 className="text-xl font-semibold tracking-tight text-slate-950">
+                  <div className="min-w-0">
+                    <h3 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
                       {area.title}
                     </h3>
 
@@ -109,23 +109,27 @@ export default function ContactAreas() {
                     </p>
 
                     <div className="mt-5 flex flex-wrap gap-2">
-                      {area.examples.map((example) => (
-                        <span
-                          key={example}
-                          className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600"
-                        >
-                          {example}
-                        </span>
-                      ))}
+                      {area.examples.map(
+                        (example) => (
+                          <span
+                            key={example}
+                            className="max-w-full break-words rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600"
+                          >
+                            {example}
+                          </span>
+                        ),
+                      )}
                     </div>
                   </div>
 
                   <Link
                     href={area.href}
                     aria-label={`Explore ${area.title}`}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition group-hover:border-slate-950 group-hover:bg-slate-950 group-hover:text-white"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition group-hover:border-slate-950 group-hover:bg-slate-950 group-hover:text-white focus:outline-none focus:ring-4 focus:ring-indigo-500/10"
                   >
-                    <span aria-hidden="true">→</span>
+                    <span aria-hidden="true">
+                      →
+                    </span>
                   </Link>
                 </div>
               </article>
@@ -133,10 +137,10 @@ export default function ContactAreas() {
           </div>
         </div>
 
-        <div className="mt-16 rounded-3xl border border-slate-200 bg-slate-50 p-8 sm:p-10">
-          <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+        <div className="mt-12 rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:mt-16 sm:p-8 lg:p-10">
+          <div className="grid gap-7 lg:grid-cols-[0.75fr_1.25fr] lg:items-center lg:gap-10">
+            <div className="min-w-0">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 sm:text-sm">
                 Broader Technology Challenge
               </p>
 
@@ -145,7 +149,7 @@ export default function ContactAreas() {
               </h3>
             </div>
 
-            <div>
+            <div className="min-w-0">
               <p className="text-base leading-7 text-slate-600">
                 That is completely fine. Many engagements begin with an
                 unclear or cross-functional problem. Tell us what is changing,
@@ -155,10 +159,14 @@ export default function ContactAreas() {
 
               <a
                 href="#contact-form"
-                className="mt-5 inline-flex text-sm font-semibold text-indigo-700 transition hover:text-indigo-900"
+                className="mt-5 inline-flex min-h-11 items-center text-sm font-semibold text-indigo-700 transition hover:text-indigo-900 focus:outline-none focus:ring-4 focus:ring-indigo-500/10"
               >
                 Describe your challenge
-                <span className="ml-2" aria-hidden="true">
+
+                <span
+                  className="ml-2"
+                  aria-hidden="true"
+                >
                   →
                 </span>
               </a>

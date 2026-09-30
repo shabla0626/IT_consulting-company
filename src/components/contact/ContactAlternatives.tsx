@@ -44,12 +44,12 @@ const confidencePoints = [
 
 export default function ContactAlternatives() {
   return (
-    <section className="border-t border-slate-200 bg-slate-50 py-24 sm:py-28">
+    <section className="border-t border-slate-200 bg-slate-50 py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-start lg:gap-16 xl:gap-20">
           {/* Heading */}
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-700">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
               Other Ways to Explore
             </p>
 
@@ -60,7 +60,7 @@ export default function ContactAlternatives() {
               </span>
             </h2>
 
-            <p className="mt-6 max-w-xl text-base leading-7 text-slate-600">
+            <p className="mt-5 max-w-xl text-base leading-7 text-slate-600 sm:mt-6">
               You may want to understand our work, read our perspectives, or
               explore career opportunities before getting in touch. Use the
               path that best matches what you are looking for.
@@ -68,55 +68,66 @@ export default function ContactAlternatives() {
           </div>
 
           {/* Alternative pathways */}
-          <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white">
-            {pathways.map((pathway, index) => (
-              <article
-                key={pathway.title}
-                className={`group p-7 transition duration-300 hover:bg-slate-50 sm:p-8 ${
-                  index !== pathways.length - 1
-                    ? "border-b border-slate-200"
-                    : ""
-                }`}
-              >
-                <div className="grid gap-6 sm:grid-cols-[1fr_auto] sm:items-center">
-                  <div>
-                    <h3 className="text-lg font-semibold tracking-tight text-slate-950">
-                      {pathway.title}
-                    </h3>
+          <div className="min-w-0 overflow-hidden rounded-3xl border border-slate-200 bg-white">
+            {pathways.map(
+              (pathway, index) => (
+                <article
+                  key={pathway.title}
+                  className={`group p-6 transition duration-300 hover:bg-slate-50 sm:p-7 md:p-8 ${
+                    index !==
+                    pathways.length - 1
+                      ? "border-b border-slate-200"
+                      : ""
+                  }`}
+                >
+                  <div className="grid min-w-0 gap-5 sm:grid-cols-[minmax(0,1fr)_44px] sm:items-center sm:gap-6">
+                    <div className="min-w-0">
+                      <h3 className="text-lg font-semibold tracking-tight text-slate-950">
+                        {pathway.title}
+                      </h3>
 
-                    <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">
-                      {pathway.description}
-                    </p>
+                      <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">
+                        {pathway.description}
+                      </p>
+
+                      <Link
+                        href={pathway.href}
+                        className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-indigo-700 transition hover:text-indigo-900 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 sm:mt-5"
+                      >
+                        {pathway.linkLabel}
+
+                        <span
+                          className="ml-2"
+                          aria-hidden="true"
+                        >
+                          →
+                        </span>
+                      </Link>
+                    </div>
 
                     <Link
                       href={pathway.href}
-                      className="mt-5 inline-flex text-sm font-semibold text-indigo-700 transition hover:text-indigo-900"
+                      aria-label={
+                        pathway.linkLabel
+                      }
+                      className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition group-hover:border-slate-950 group-hover:bg-slate-950 group-hover:text-white focus:outline-none focus:ring-4 focus:ring-indigo-500/10 sm:flex"
                     >
-                      {pathway.linkLabel}
-                      <span className="ml-2" aria-hidden="true">
+                      <span aria-hidden="true">
                         →
                       </span>
                     </Link>
                   </div>
-
-                  <Link
-                    href={pathway.href}
-                    aria-label={pathway.linkLabel}
-                    className="hidden h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition group-hover:border-slate-950 group-hover:bg-slate-950 group-hover:text-white sm:flex"
-                  >
-                    <span aria-hidden="true">→</span>
-                  </Link>
-                </div>
-              </article>
-            ))}
+                </article>
+              ),
+            )}
           </div>
         </div>
 
         {/* Confidence / privacy guidance */}
-        <div className="mt-16 border-t border-slate-200 pt-14">
+        <div className="mt-12 border-t border-slate-200 pt-12 sm:mt-16 sm:pt-14">
           <div className="grid gap-10 lg:grid-cols-[0.68fr_1.32fr] lg:gap-16">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+            <div className="min-w-0">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 sm:text-sm">
                 Before You Reach Out
               </p>
 
@@ -124,40 +135,45 @@ export default function ContactAlternatives() {
                 Keep the first conversation simple.
               </h3>
 
-              <p className="mt-4 text-sm leading-6 text-slate-600">
+              <p className="mt-4 max-w-xl text-sm leading-6 text-slate-600">
                 The purpose of the initial inquiry is to provide enough context
                 to decide whether a useful conversation should happen next.
               </p>
             </div>
 
-            <div className="grid gap-8 sm:grid-cols-3">
-              {confidencePoints.map((point, index) => (
-                <article
-                  key={point.title}
-                  className="border-t border-slate-300 pt-5"
-                >
-                  <span className="text-xs font-semibold tracking-[0.16em] text-indigo-700">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+            <div className="grid gap-7 sm:grid-cols-3 sm:gap-6 lg:gap-8">
+              {confidencePoints.map(
+                (point, index) => (
+                  <article
+                    key={point.title}
+                    className="min-w-0 border-t border-slate-300 pt-5"
+                  >
+                    <span className="text-xs font-semibold tracking-[0.16em] text-indigo-700">
+                      {String(index + 1).padStart(
+                        2,
+                        "0",
+                      )}
+                    </span>
 
-                  <h4 className="mt-4 text-base font-semibold text-slate-950">
-                    {point.title}
-                  </h4>
+                    <h4 className="mt-4 text-base font-semibold text-slate-950">
+                      {point.title}
+                    </h4>
 
-                  <p className="mt-3 text-sm leading-6 text-slate-600">
-                    {point.description}
-                  </p>
-                </article>
-              ))}
+                    <p className="mt-3 text-sm leading-6 text-slate-600">
+                      {point.description}
+                    </p>
+                  </article>
+                ),
+              )}
             </div>
           </div>
         </div>
 
-        {/* Final route back to the form */}
-        <div className="mt-16 rounded-3xl bg-slate-950 p-8 text-white sm:p-10 lg:p-12">
-          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-300">
+        {/* Final CTA */}
+        <div className="mt-12 rounded-3xl bg-slate-950 p-6 text-white sm:mt-16 sm:p-8 lg:p-10 xl:p-12">
+          <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-10">
+            <div className="min-w-0 max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-indigo-300 sm:text-sm">
                 Ready to Talk?
               </p>
 
@@ -174,10 +190,14 @@ export default function ContactAlternatives() {
 
             <a
               href="#contact-form"
-              className="inline-flex w-fit items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-white/20 sm:w-fit lg:w-auto"
             >
               Start a Conversation
-              <span className="ml-2" aria-hidden="true">
+
+              <span
+                className="ml-2"
+                aria-hidden="true"
+              >
                 →
               </span>
             </a>

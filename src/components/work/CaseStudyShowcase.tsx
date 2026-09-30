@@ -3,213 +3,165 @@ import Link from "next/link";
 const caseStudies = [
   {
     number: "01",
-    category: "Cloud Modernization",
-    title: "Modernizing a platform for reliability, delivery, and scale.",
+    type: "Cloud Modernization",
+    title: "Modernizing a platform for more sustainable delivery.",
     description:
-      "A representative engagement showing how legacy architecture, cloud foundations, delivery workflows, and operational practices can be modernized together rather than treated as isolated initiatives.",
-    challenge:
-      "A complex platform environment with aging services, inconsistent deployment processes, operational friction, and increasing pressure to release changes more safely.",
-    approach: [
-      "Assess application and infrastructure constraints",
-      "Define a modernization roadmap",
-      "Introduce cloud and platform engineering foundations",
-      "Improve CI/CD, observability, and operational ownership",
-    ],
-    capabilities: [
-      "Cloud Architecture",
+      "A representative engagement exploring how legacy infrastructure, deployment practices, architecture, and operational ownership could be modernized together.",
+    themes: [
+      "Cloud",
       "Platform Engineering",
-      "Application Modernization",
       "DevOps",
-      "Observability",
+      "Modernization",
     ],
     href: "/work/cloud-modernization-platform",
-    accent: "text-sky-400",
-    border: "border-sky-500/20",
-    background: "bg-sky-500/5",
+    accent: "text-sky-700",
+    surface: "bg-sky-50",
+    border: "border-sky-100",
+    dot: "bg-sky-500",
   },
   {
     number: "02",
-    category: "AI & Data",
-    title: "Building a data and AI foundation for practical intelligence.",
+    type: "AI & Data",
+    title: "Creating the foundations for production data and AI.",
     description:
-      "A representative engagement focused on creating the data architecture, engineering workflows, and AI capabilities needed to move from fragmented information toward usable production systems.",
-    challenge:
-      "Data spread across multiple systems, inconsistent access patterns, limited analytical foundations, and growing demand for AI-enabled workflows.",
-    approach: [
-      "Clarify priority business use cases",
-      "Improve data ingestion and platform foundations",
-      "Design analytics and AI-ready architecture",
-      "Introduce evaluation, monitoring, and production controls",
-    ],
-    capabilities: [
-      "Data Engineering",
-      "Analytics Platforms",
-      "Generative AI",
+      "A representative engagement showing how data foundations, applied AI, software engineering, evaluation, and operations can work as one production system.",
+    themes: [
+      "Data Platform",
+      "Applied AI",
       "Machine Learning",
       "AI Operations",
     ],
     href: "/work/data-ai-platform",
-    accent: "text-violet-400",
-    border: "border-violet-500/20",
-    background: "bg-violet-500/5",
+    accent: "text-violet-700",
+    surface: "bg-violet-50",
+    border: "border-violet-100",
+    dot: "bg-violet-500",
   },
   {
     number: "03",
-    category: "Digital Product",
-    title: "Creating a digital platform around evolving business needs.",
+    type: "Digital Product",
+    title: "Building a product platform designed to evolve.",
     description:
-      "A representative engagement showing how product engineering, architecture, APIs, cloud infrastructure, and delivery practices can come together around a modern digital product.",
-    challenge:
-      "A growing digital product with increasing feature demands, integration complexity, architectural friction, and a need for more sustainable engineering delivery.",
-    approach: [
-      "Understand product and user priorities",
-      "Redesign key application and service boundaries",
-      "Improve APIs and integration architecture",
-      "Strengthen engineering quality and delivery practices",
-    ],
-    capabilities: [
+      "A representative engagement connecting product experience, application architecture, APIs, cloud foundations, quality, and engineering practices.",
+    themes: [
       "Product Engineering",
-      "Web Applications",
-      "API Engineering",
-      "Cloud-Native Development",
-      "Quality Engineering",
+      "Software Architecture",
+      "APIs",
+      "Cloud",
     ],
     href: "/work/digital-product-platform",
-    accent: "text-emerald-400",
-    border: "border-emerald-500/20",
-    background: "bg-emerald-500/5",
+    accent: "text-cyan-700",
+    surface: "bg-cyan-50",
+    border: "border-cyan-100",
+    dot: "bg-cyan-500",
   },
 ];
 
 export default function CaseStudyShowcase() {
   return (
-    <section
-      id="featured-work"
-      className="bg-white py-24 sm:py-28"
-    >
+    <section className="bg-white py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600">
-            Representative Work
-          </p>
+        <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:gap-16">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
+              Representative Case Studies
+            </p>
 
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-            See how complex technology problems can be approached end to end.
-          </h2>
+            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              See the problem,
+              <span className="block text-slate-500">
+                decisions, and delivery.
+              </span>
+            </h2>
+          </div>
 
-          <p className="mt-6 text-base leading-7 text-slate-600">
-            These representative engagements illustrate how our consulting
-            approach connects business context, architecture, engineering,
-            cloud, data, AI, security, and delivery. They are not presented as
-            verified client case studies unless explicitly identified as such.
-          </p>
+          <div className="max-w-2xl lg:justify-self-end">
+            <p className="text-base leading-7 text-slate-600">
+              These scenarios illustrate the kind of multidisciplinary
+              technology work the site is designed to communicate. They are not
+              presented as verified client engagements.
+            </p>
+          </div>
         </div>
 
-        <div className="mt-16 space-y-8">
+        <div className="mt-12 space-y-5 sm:mt-14 lg:mt-16">
           {caseStudies.map((study) => (
-            <article
+            <Link
               key={study.href}
-              className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-950 text-white"
+              href={study.href}
+              className={`group block overflow-hidden rounded-3xl border ${study.border} transition hover:shadow-xl hover:shadow-slate-950/5`}
             >
-              <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
-                <div className="p-8 sm:p-10 lg:p-12">
-                  <div className="flex items-center gap-4">
-                    <span className="text-sm font-semibold tracking-[0.18em] text-slate-500">
-                      {study.number}
-                    </span>
+              <article className="grid min-w-0 lg:grid-cols-[190px_1fr_auto]">
+                <div
+                  className={`border-b ${study.border} ${study.surface} p-6 sm:p-7 lg:border-b-0 lg:border-r lg:p-8`}
+                >
+                  <span
+                    className={`text-xs font-semibold tracking-[0.18em] ${study.accent}`}
+                  >
+                    {study.number}
+                  </span>
 
-                    <span
-                      className={`text-sm font-semibold uppercase tracking-[0.18em] ${study.accent}`}
-                    >
-                      {study.category}
-                    </span>
+                  <div className="mt-8">
+                    <div className="flex items-center gap-2">
+                      <span
+                        className={`h-2 w-2 rounded-full ${study.dot}`}
+                        aria-hidden="true"
+                      />
+                      <p className={`text-sm font-semibold ${study.accent}`}>
+                        {study.type}
+                      </p>
+                    </div>
+
+                    <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                      Representative
+                    </p>
                   </div>
+                </div>
 
-                  <h3 className="mt-6 max-w-xl text-2xl font-semibold tracking-tight sm:text-3xl">
+                <div className="min-w-0 bg-white p-6 sm:p-7 lg:p-8">
+                  <h3 className="max-w-3xl text-xl font-semibold tracking-tight text-slate-950 sm:text-2xl">
                     {study.title}
                   </h3>
 
-                  <p className="mt-5 max-w-xl text-base leading-7 text-slate-300">
+                  <p className="mt-4 max-w-3xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
                     {study.description}
                   </p>
 
-                  <div className="mt-8">
-                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">
-                      Representative Challenge
-                    </p>
-
-                    <p className="mt-3 max-w-xl text-sm leading-6 text-slate-300">
-                      {study.challenge}
-                    </p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {study.themes.map((theme) => (
+                      <span
+                        key={theme}
+                        className={`rounded-full border ${study.border} ${study.surface} px-3 py-1.5 text-xs font-medium text-slate-600`}
+                      >
+                        {theme}
+                      </span>
+                    ))}
                   </div>
+                </div>
 
-                  <Link
-                    href={study.href}
-                    className="mt-9 inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
-                  >
-                    Explore Engagement
-                    <span className="ml-2" aria-hidden="true">
+                <div className="flex items-center border-t border-slate-200 bg-white px-6 py-5 sm:px-7 lg:border-l lg:border-t-0 lg:px-8">
+                  <div className="flex w-full items-center justify-between gap-4 lg:w-auto lg:flex-col lg:justify-center">
+                    <span className={`text-sm font-semibold ${study.accent}`}>
+                      Read case study
+                    </span>
+
+                    <span
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition group-hover:border-slate-950 group-hover:bg-slate-950 group-hover:text-white"
+                      aria-hidden="true"
+                    >
                       →
                     </span>
-                  </Link>
-                </div>
-
-                <div
-                  className={`border-t ${study.border} ${study.background} p-8 sm:p-10 lg:border-l lg:border-t-0 lg:p-12`}
-                >
-                  <div>
-                    <p className={`text-sm font-semibold ${study.accent}`}>
-                      Our Approach
-                    </p>
-
-                    <div className="mt-6 space-y-4">
-                      {study.approach.map((item, index) => (
-                        <div
-                          key={item}
-                          className="flex gap-4 border-b border-white/10 pb-4"
-                        >
-                          <span className="text-xs font-semibold tracking-[0.15em] text-slate-500">
-                            {String(index + 1).padStart(2, "0")}
-                          </span>
-
-                          <p className="text-sm leading-6 text-slate-200">
-                            {item}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="mt-10">
-                    <p className={`text-sm font-semibold ${study.accent}`}>
-                      Capabilities Involved
-                    </p>
-
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {study.capabilities.map((capability) => (
-                        <span
-                          key={capability}
-                          className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-slate-300"
-                        >
-                          {capability}
-                        </span>
-                      ))}
-                    </div>
                   </div>
                 </div>
-              </div>
-            </article>
+              </article>
+            </Link>
           ))}
         </div>
 
-        <div className="mt-10 rounded-2xl border border-amber-200 bg-amber-50 px-6 py-5">
-          <p className="text-sm leading-6 text-amber-900">
-            <span className="font-semibold">Content note:</span>{" "}
-            These engagements are currently illustrative. Real client names,
-            outcomes, metrics, testimonials, and business results should only
-            be added once they are verified and approved for publication.
-          </p>
-        </div>
+        <p className="mt-6 text-xs leading-5 text-slate-500">
+          Development note: replace representative scenarios with approved,
+          verifiable client work before presenting them as real engagements.
+        </p>
       </div>
     </section>
   );

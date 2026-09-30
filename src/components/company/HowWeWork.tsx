@@ -1,143 +1,120 @@
-const waysOfWorking = [
+const stages = [
   {
     number: "01",
-    title: "Work with the client team, not around it.",
+    title: "Understand",
     description:
-      "We collaborate closely with product, engineering, security, operations, and business stakeholders so decisions remain connected to the people who will own the outcome.",
+      "Learn the business context, users, systems, technical constraints, dependencies, and desired outcome.",
   },
   {
     number: "02",
-    title: "Make decisions and trade-offs visible.",
+    title: "Shape",
     description:
-      "Architecture choices, delivery priorities, risks, assumptions, and constraints should be explicit enough that everyone understands why a direction was chosen.",
+      "Define priorities, architecture, delivery approach, team composition, and the important technical trade-offs.",
   },
   {
     number: "03",
-    title: "Deliver in useful increments.",
+    title: "Build",
     description:
-      "We prefer iterative delivery that produces meaningful progress, reduces risk, and creates regular opportunities to validate assumptions and adjust the approach.",
+      "Deliver collaboratively using the engineering, cloud, data, security, product, and delivery disciplines the work requires.",
   },
   {
     number: "04",
-    title: "Build ownership throughout the engagement.",
+    title: "Evolve",
     description:
-      "Documentation, knowledge transfer, shared implementation, and operational readiness are part of delivery rather than activities postponed until the end.",
-  },
-];
-
-const engagementRhythm = [
-  {
-    title: "Discover",
-    description:
-      "Understand the business problem, users, systems, constraints, risks, and current operating environment.",
-  },
-  {
-    title: "Align",
-    description:
-      "Define priorities, architecture direction, success criteria, responsibilities, and a practical delivery path.",
-  },
-  {
-    title: "Deliver",
-    description:
-      "Build and improve the solution through coordinated engineering, regular validation, and transparent progress.",
-  },
-  {
-    title: "Enable",
-    description:
-      "Strengthen operational readiness, documentation, knowledge, and the client team's ability to continue evolving the result.",
+      "Strengthen operational ownership, engineering practices, reliability, knowledge, and the ability to continue changing.",
   },
 ];
 
 export default function HowWeWork() {
   return (
-    <section className="bg-slate-50 py-24 sm:py-28">
+    <section className="bg-slate-50 py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:gap-16">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
               How We Work
             </p>
 
-            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-              Collaborative delivery with
+            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              From context
               <span className="block text-slate-500">
-                clear ownership and visibility.
+                to sustainable ownership.
               </span>
             </h2>
-
-            <p className="mt-6 max-w-xl text-base leading-7 text-slate-600">
-              Consulting works best when the client is not separated from the
-              work. We aim to create a shared delivery environment where
-              decisions, progress, risks, and technical understanding remain
-              visible throughout the engagement.
-            </p>
-
-            <p className="mt-4 max-w-xl text-base leading-7 text-slate-600">
-              The goal is not simply to hand over a finished solution. It is to
-              build the solution while strengthening the client&apos; s ability to
-              understand, operate, and evolve it.
-            </p>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
-            {waysOfWorking.map((item) => (
-              <article
-                key={item.number}
-                className="rounded-3xl border border-slate-200 bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-950/5 sm:p-8"
-              >
-                <span className="text-sm font-semibold tracking-[0.18em] text-indigo-600">
-                  {item.number}
-                </span>
+          <p className="max-w-2xl text-base leading-7 text-slate-600 lg:justify-self-end">
+            The delivery model should adapt to the problem, but the underlying
+            approach remains consistent: understand first, make deliberate
+            decisions, deliver collaboratively, and strengthen ownership.
+          </p>
+        </div>
 
-                <h3 className="mt-6 text-xl font-semibold tracking-tight text-slate-950">
-                  {item.title}
+        <div className="mt-12 overflow-hidden rounded-3xl border border-slate-200 bg-white sm:mt-14 lg:mt-16">
+          <div className="grid lg:grid-cols-4">
+            {stages.map((stage, index) => (
+              <article
+                key={stage.number}
+                className={`min-w-0 p-6 sm:p-8 lg:p-9 ${
+                  index !== stages.length - 1
+                    ? "border-b border-slate-200 lg:border-b-0 lg:border-r"
+                    : ""
+                }`}
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <span className="text-xs font-semibold tracking-[0.18em] text-indigo-700">
+                    {stage.number}
+                  </span>
+
+                  <span
+                    className="h-2 w-2 rounded-full bg-indigo-500"
+                    aria-hidden="true"
+                  />
+                </div>
+
+                <h3 className="mt-7 text-xl font-semibold tracking-tight text-slate-950">
+                  {stage.title}
                 </h3>
 
                 <p className="mt-4 text-sm leading-6 text-slate-600">
-                  {item.description}
+                  {stage.description}
                 </p>
               </article>
             ))}
           </div>
         </div>
 
-        <div className="mt-16 rounded-3xl bg-slate-950 p-8 text-white sm:p-10 lg:p-12">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-300">
-              Engagement Rhythm
-            </p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          {[
+            {
+              title: "Adaptable",
+              description:
+                "The engagement model follows the problem rather than forcing every challenge into the same process.",
+            },
+            {
+              title: "Collaborative",
+              description:
+                "Decisions are made with the people who understand and will continue owning the technology.",
+            },
+            {
+              title: "Practical",
+              description:
+                "Architecture and strategy remain connected to what teams can realistically build and operate.",
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6"
+            >
+              <h3 className="font-semibold text-slate-950">
+                {item.title}
+              </h3>
 
-            <h3 className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">
-              A practical path from uncertainty to ownership.
-            </h3>
-
-            <p className="mt-5 text-base leading-7 text-slate-300">
-              Every engagement is different, but the underlying rhythm stays
-              consistent: understand the environment, align on the direction,
-              deliver iteratively, and enable long-term ownership.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {engagementRhythm.map((stage, index) => (
-              <article
-                key={stage.title}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6"
-              >
-                <span className="text-xs font-semibold tracking-[0.16em] text-indigo-300">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                <h4 className="mt-5 text-lg font-semibold text-white">
-                  {stage.title}
-                </h4>
-
-                <p className="mt-3 text-sm leading-6 text-slate-300">
-                  {stage.description}
-                </p>
-              </article>
-            ))}
-          </div>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                {item.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

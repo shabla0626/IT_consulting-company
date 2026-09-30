@@ -2,45 +2,111 @@ import Link from "next/link";
 
 export default function ContactCTA() {
   return (
-    <section className="relative overflow-hidden bg-neutral-950 text-white">
-      <div
-        className="pointer-events-none absolute -bottom-40 right-0 h-[420px] w-[420px] rounded-full bg-indigo-600/20 blur-3xl"
-        aria-hidden="true"
-      />
-      <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24 lg:px-8 lg:py-32">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-20">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-400">
-              Start a Conversation
-            </p>
+    <section className="bg-slate-100 py-20 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="relative overflow-hidden rounded-[2rem] bg-indigo-700 px-6 py-10 text-white sm:px-8 sm:py-12 lg:px-12 lg:py-14">
+          {/* Subtle background accents */}
+          <div
+            className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-3xl"
+            aria-hidden="true"
+          />
 
-            <h2 className="mt-5 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
-              Have a technology challenge?
-              <span className="mt-2 block text-neutral-500">
-                Let&apos;s talk about what you&apos;re building.
-              </span>
-            </h2>
+          <div
+            className="pointer-events-none absolute -bottom-24 left-1/4 h-56 w-56 rounded-full bg-violet-400/10 blur-3xl"
+            aria-hidden="true"
+          />
+
+          <div className="relative grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16">
+            {/* Message */}
+            <div className="min-w-0">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-100 sm:text-sm">
+                Start a Conversation
+              </p>
+
+              <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
+                Have a technology challenge?
+                <span className="block text-indigo-100">
+                  Let&apos;s talk about what you&apos;re building.
+                </span>
+              </h2>
+
+              <p className="mt-6 max-w-2xl text-base leading-7 text-indigo-100">
+                Share the problem, the context, and where you are in the
+                journey. We can start from the challenge rather than forcing it
+                into a predefined service category.
+              </p>
+            </div>
+
+            {/* Action panel */}
+            <div className="rounded-3xl border border-white/15 bg-white/10 p-6 backdrop-blur-sm sm:p-7">
+              <p className="text-sm font-semibold text-white">
+                A useful starting point
+              </p>
+
+              <div className="mt-5 space-y-4">
+                <div className="flex gap-3">
+                  <span
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white"
+                    aria-hidden="true"
+                  />
+
+                  <p className="text-sm leading-6 text-indigo-100">
+                    What are you trying to improve, build, modernize, or
+                    understand?
+                  </p>
+                </div>
+
+                <div className="flex gap-3">
+                  <span
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white"
+                    aria-hidden="true"
+                  />
+
+                  <p className="text-sm leading-6 text-indigo-100">
+                    What technical, organizational, or delivery constraints
+                    are shaping the problem?
+                  </p>
+                </div>
+
+                <div className="flex gap-3">
+                  <span
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white"
+                    aria-hidden="true"
+                  />
+
+                  <p className="text-sm leading-6 text-indigo-100">
+                    What would a useful next step look like for your team?
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-7 flex flex-col gap-3">
+                <Link
+                  href="/contact"
+                  className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-indigo-800 transition hover:bg-indigo-50 focus:outline-none focus:ring-4 focus:ring-white/30"
+                >
+                  Talk to an Expert
+                  <span className="ml-2" aria-hidden="true">
+                    →
+                  </span>
+                </Link>
+
+                <Link
+                  href="/work"
+                  className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10 focus:outline-none focus:ring-4 focus:ring-white/20"
+                >
+                  Explore Our Work
+                </Link>
+              </div>
+            </div>
           </div>
 
-          <div className="lg:justify-self-end">
-            <p className="max-w-md text-lg leading-8 text-neutral-400">
-              Whether you&apos;re modernizing an existing platform, launching a
-              new product, adopting AI, or solving a complex engineering
-              problem, we&apos;d like to hear about it.
+          {/* Bottom trust statement */}
+          <div className="relative mt-10 border-t border-white/15 pt-6 sm:mt-12">
+            <p className="max-w-3xl text-sm leading-6 text-indigo-100">
+              Start with the problem. The right combination of software, cloud,
+              data, AI, security, design, and consulting can follow from there.
             </p>
-
-            <Link
-              href="/contact"
-              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200"
-            >
-              Talk to an Expert
-              <span
-                className="transition-transform group-hover:translate-x-1"
-                aria-hidden="true"
-              >
-                →
-              </span>
-            </Link>
           </div>
         </div>
       </div>

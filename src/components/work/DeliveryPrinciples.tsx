@@ -1,118 +1,73 @@
 const principles = [
   {
-    number: "01",
-    title: "Senior expertise stays involved.",
+    title: "Senior expertise stays involved",
     description:
-      "Experienced practitioners remain close to the work—from understanding the problem and shaping architecture to guiding delivery and resolving difficult technical decisions.",
+      "Important technical and delivery decisions should remain close to experienced practitioners throughout the engagement.",
   },
   {
-    number: "02",
-    title: "Business outcomes come first.",
+    title: "Business context comes first",
     description:
-      "Technology decisions should support the underlying objective. We connect architecture, engineering, delivery, and technical trade-offs back to the business problem being solved.",
+      "Architecture and engineering choices should connect to the actual problem rather than technology trends in isolation.",
   },
   {
-    number: "03",
-    title: "One multidisciplinary team.",
+    title: "One multidisciplinary team",
     description:
-      "Software, cloud, data, AI, security, platform, and consulting disciplines work together around the same engagement instead of operating as disconnected service lines.",
+      "Product, architecture, software, cloud, data, security, and delivery perspectives should work around shared outcomes.",
   },
   {
-    number: "04",
-    title: "Built for long-term ownership.",
+    title: "Ownership matters after launch",
     description:
-      "We aim to leave behind technology that is understandable, maintainable, observable, and practical for the teams responsible for evolving it after delivery.",
+      "Maintainability, observability, documentation, reliability, and knowledge transfer are part of delivery.",
   },
 ];
 
 export default function DeliveryPrinciples() {
   return (
-    <section className="bg-slate-950 py-24 text-white sm:py-28">
+    <section className="bg-slate-50 py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:gap-16">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-300">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
               Delivery Principles
             </p>
 
-            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight sm:text-4xl">
-              Consulting should strengthen
-              <span className="block text-slate-400">
-                the client, not create dependency.
+            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              How the work is done
+              <span className="block text-slate-500">
+                matters as much as what is built.
               </span>
             </h2>
-
-            <p className="mt-6 max-w-xl text-base leading-7 text-slate-300">
-              Good technology consulting is not only about completing a scope
-              of work. It is about making sound technical decisions, working
-              effectively with client teams, and creating systems and practices
-              that can continue to evolve after the engagement.
-            </p>
-
-            <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
-              <p className="text-sm font-semibold text-white">
-                The standard we aim for
-              </p>
-
-              <p className="mt-3 text-sm leading-6 text-slate-300">
-                Solve the right problem, involve the right expertise, build
-                with discipline, and leave the organization better equipped
-                to own what comes next.
-              </p>
-            </div>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
-            {principles.map((principle) => (
-              <article
-                key={principle.number}
-                className="rounded-3xl border border-white/10 bg-white/5 p-7 transition duration-300 hover:border-white/20 hover:bg-white/[0.07] sm:p-8"
-              >
-                <span className="text-sm font-semibold tracking-[0.18em] text-indigo-300">
-                  {principle.number}
-                </span>
-
-                <h3 className="mt-6 text-xl font-semibold tracking-tight text-white">
-                  {principle.title}
-                </h3>
-
-                <p className="mt-4 text-sm leading-6 text-slate-300">
-                  {principle.description}
-                </p>
-              </article>
-            ))}
-          </div>
+          <p className="max-w-2xl text-base leading-7 text-slate-600 lg:justify-self-end">
+            Sustainable consulting work should improve the technology and the
+            organization&apos;s ability to continue owning and evolving it.
+          </p>
         </div>
 
-        <div className="mt-16 border-t border-white/10 pt-10">
-          <div className="grid gap-8 md:grid-cols-3">
-            <div>
-              <p className="text-sm font-semibold text-white">
-                Collaborative
-              </p>
-              <p className="mt-2 text-sm leading-6 text-slate-400">
-                Work with client teams rather than around them.
-              </p>
-            </div>
+        <div className="mt-12 overflow-hidden rounded-3xl border border-slate-200 bg-white sm:mt-14 lg:mt-16">
+          {principles.map((principle, index) => (
+            <article
+              key={principle.title}
+              className={`grid min-w-0 gap-4 p-6 sm:p-7 lg:grid-cols-[72px_320px_1fr] lg:gap-8 lg:p-8 ${
+                index !== principles.length - 1
+                  ? "border-b border-slate-200"
+                  : ""
+              }`}
+            >
+              <span className="text-xs font-semibold tracking-[0.18em] text-indigo-700">
+                {String(index + 1).padStart(2, "0")}
+              </span>
 
-            <div>
-              <p className="text-sm font-semibold text-white">
-                Transparent
-              </p>
-              <p className="mt-2 text-sm leading-6 text-slate-400">
-                Make decisions, trade-offs, progress, and risks visible.
-              </p>
-            </div>
+              <h3 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
+                {principle.title}
+              </h3>
 
-            <div>
-              <p className="text-sm font-semibold text-white">
-                Sustainable
+              <p className="text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+                {principle.description}
               </p>
-              <p className="mt-2 text-sm leading-6 text-slate-400">
-                Favor maintainable systems over short-term technical fixes.
-              </p>
-            </div>
-          </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

@@ -3,70 +3,128 @@ const principles = [
     number: "01",
     title: "Senior expertise stays involved",
     description:
-      "Experienced engineers, architects, designers, and consultants stay close to the work from strategy through delivery.",
+      "Experienced practitioners remain close to the work, contributing to architecture, delivery decisions, problem-solving, and technical quality.",
   },
   {
     number: "02",
     title: "Business outcomes come first",
     description:
-      "Technology decisions are connected to measurable goals such as speed, reliability, customer experience, and operational efficiency.",
+      "Technology decisions should connect to the wider business problem, operating context, risks, priorities, and outcomes that matter.",
   },
   {
     number: "03",
     title: "One multidisciplinary team",
     description:
-      "Strategy, design, engineering, cloud, data, and security work together instead of operating as disconnected functions.",
+      "Software, cloud, data, AI, security, design, and consulting expertise can work together around the same challenge instead of operating in isolated silos.",
   },
   {
     number: "04",
     title: "Built for long-term ownership",
     description:
-      "We design systems that internal teams can understand, operate, maintain, and continue improving after delivery.",
+      "We care about maintainability, reliability, security, documentation, observability, and making systems easier for teams to own after delivery.",
   },
 ];
 
 export default function WhyUs() {
   return (
-    <section className="bg-neutral-100">
-      <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24 lg:px-8 lg:py-32">
-        <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
-          {/* Intro */}
+    <section className="bg-white py-20 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Heading */}
+        <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:gap-16">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-600">
-              Why Work With Us
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
+              Why Nexora
             </p>
 
-            <h2 className="mt-5 max-w-xl text-4xl font-semibold tracking-[-0.035em] text-neutral-950 sm:text-5xl">
-              Consulting that stays close to the technology and the outcome.
+            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Experienced people,
+              <span className="block text-slate-500">
+                connected to the work.
+              </span>
             </h2>
-
-            <p className="mt-6 max-w-lg text-lg leading-8 text-neutral-600">
-              We combine strategic thinking with hands-on delivery. Our goal is
-              not only to recommend what should change, but to help design,
-              build, and improve the systems that make that change real.
-            </p>
           </div>
 
-          {/* Principles */}
-          <div className="grid gap-px overflow-hidden rounded-3xl bg-neutral-300 sm:grid-cols-2">
-            {principles.map((principle) => (
-              <article
-                key={principle.number}
-                className="group bg-white p-7 transition-colors hover:bg-neutral-950 sm:p-8"
-              >
-                <p className="text-sm font-medium text-neutral-400 transition-colors group-hover:text-neutral-600">
-                  {principle.number}
-                </p>
+          <div className="max-w-2xl lg:justify-self-end">
+            <p className="text-base leading-7 text-slate-600">
+              Good consulting should combine technical depth, business context,
+              clear communication, and practical delivery. We want experienced
+              people to stay close to the decisions that shape the outcome.
+            </p>
+          </div>
+        </div>
 
-                <h3 className="mt-12 text-xl font-semibold tracking-tight text-neutral-950 transition-colors group-hover:text-white sm:text-2xl">
-                  {principle.title}
-                </h3>
+        {/* Principles */}
+        <div className="mt-12 overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 sm:mt-14 lg:mt-16">
+          {principles.map((principle, index) => (
+            <article
+              key={principle.number}
+              className={`grid min-w-0 gap-5 p-6 sm:p-7 md:grid-cols-[72px_1fr] lg:grid-cols-[90px_320px_1fr] lg:items-start lg:gap-8 lg:p-8 ${
+                index !== principles.length - 1
+                  ? "border-b border-slate-200"
+                  : ""
+              }`}
+            >
+              <span className="text-xs font-semibold tracking-[0.18em] text-indigo-700 sm:text-sm">
+                {principle.number}
+              </span>
 
-                <p className="mt-4 text-sm leading-7 text-neutral-600 transition-colors group-hover:text-neutral-400">
-                  {principle.description}
-                </p>
-              </article>
-            ))}
+              <h3 className="text-xl font-semibold tracking-tight text-slate-950 sm:text-2xl">
+                {principle.title}
+              </h3>
+
+              <p className="text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+                {principle.description}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        {/* Positioning statement */}
+        <div className="mt-12 rounded-3xl bg-slate-950 p-7 text-white sm:mt-14 sm:p-9 lg:mt-16 lg:p-12">
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-center lg:gap-14">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-indigo-300 sm:text-sm">
+                Our Position
+              </p>
+
+              <h3 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
+                Not staffing. Technology problem-solving.
+              </h3>
+            </div>
+
+            <div>
+              <p className="text-sm leading-7 text-slate-300 sm:text-base">
+                We are not positioning Nexora as a company that simply supplies
+                developers. The goal is to bring together experienced,
+                multidisciplinary teams that can understand the problem, make
+                sound technology decisions, and help carry those decisions
+                through delivery.
+              </p>
+
+              <div className="mt-7 grid gap-5 sm:grid-cols-2">
+                <div className="border-t border-white/10 pt-5">
+                  <p className="text-sm font-semibold text-white">
+                    Expertise that stays engaged
+                  </p>
+
+                  <p className="mt-2 text-sm leading-6 text-slate-400">
+                    Senior practitioners contribute beyond the initial proposal
+                    or discovery phase.
+                  </p>
+                </div>
+
+                <div className="border-t border-white/10 pt-5">
+                  <p className="text-sm font-semibold text-white">
+                    Delivery that creates ownership
+                  </p>
+
+                  <p className="mt-2 text-sm leading-6 text-slate-400">
+                    The work should leave teams with stronger systems,
+                    practices, and understanding.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

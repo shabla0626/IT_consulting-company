@@ -11,36 +11,41 @@ export default function ContactHero() {
   return (
     <section className="relative overflow-hidden bg-slate-950 text-white">
       <div
-        className="absolute -right-36 -top-36 h-96 w-96 rounded-full bg-indigo-500/10 blur-3xl"
+        className="pointer-events-none absolute -right-32 -top-32 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl sm:h-96 sm:w-96"
         aria-hidden="true"
       />
 
       <div
-        className="absolute -bottom-44 left-1/4 h-96 w-96 rounded-full bg-cyan-500/5 blur-3xl"
+        className="pointer-events-none absolute -bottom-36 left-0 h-72 w-72 rounded-full bg-cyan-500/5 blur-3xl sm:left-1/4 sm:h-96 sm:w-96"
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 py-20 sm:py-24 lg:px-8 lg:py-28">
+      <div className="relative mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-8 lg:py-24">
         <nav
           aria-label="Breadcrumb"
-          className="flex items-center gap-2 text-sm text-slate-400"
+          className="flex flex-wrap items-center gap-2 text-sm text-slate-400"
         >
-          <Link href="/" className="transition hover:text-white">
+          <Link
+            href="/"
+            className="inline-flex min-h-11 items-center transition hover:text-white focus:outline-none focus:ring-4 focus:ring-white/10"
+          >
             Home
           </Link>
 
           <span aria-hidden="true">/</span>
 
-          <span className="text-slate-200">Contact</span>
+          <span className="text-slate-200">
+            Contact
+          </span>
         </nav>
 
-        <div className="mt-10 grid gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:items-end lg:gap-20">
-          <div className="max-w-4xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-300">
+        <div className="mt-8 grid gap-12 lg:mt-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end lg:gap-20">
+          <div className="min-w-0 max-w-4xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-300 sm:text-sm">
               Talk to an Expert
             </p>
 
-            <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 max-w-4xl text-[2.5rem] font-semibold leading-[1.05] tracking-[-0.035em] sm:text-5xl sm:leading-[1.04] lg:text-6xl">
               Tell us what you&apos;re
               <span className="block text-slate-400">
                 trying to solve.
@@ -59,27 +64,31 @@ export default function ContactHero() {
               multidisciplinary teams may be able to help.
             </p>
 
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap">
               <a
                 href="#contact-form"
-                className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-white/20 sm:w-auto"
               >
                 Start a Conversation
-                <span className="ml-2" aria-hidden="true">
+
+                <span
+                  className="ml-2"
+                  aria-hidden="true"
+                >
                   →
                 </span>
               </a>
 
               <Link
                 href="/work"
-                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10 focus:outline-none focus:ring-4 focus:ring-white/10 sm:w-auto"
               >
                 Explore Our Work
               </Link>
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-8 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+          <div className="min-w-0 border-t border-white/10 pt-8 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
               Areas We Can Discuss
             </p>
@@ -88,27 +97,27 @@ export default function ContactHero() {
               {focusAreas.map((area, index) => (
                 <div
                   key={area}
-                  className="flex items-center justify-between gap-5 py-4 first:pt-0"
+                  className="flex min-w-0 items-center justify-between gap-4 py-4 first:pt-0"
                 >
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-semibold tracking-[0.16em] text-indigo-300">
+                  <div className="flex min-w-0 items-center gap-4">
+                    <span className="shrink-0 text-xs font-semibold tracking-[0.16em] text-indigo-300">
                       {String(index + 1).padStart(2, "0")}
                     </span>
 
-                    <span className="text-sm font-medium text-slate-200">
+                    <span className="min-w-0 text-sm font-medium text-slate-200">
                       {area}
                     </span>
                   </div>
 
                   <span
-                    className="h-1.5 w-1.5 rounded-full bg-indigo-400"
+                    className="h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400"
                     aria-hidden="true"
                   />
                 </div>
               ))}
             </div>
 
-            <div className="mt-7 rounded-2xl border border-white/10 bg-white/5 p-5">
+            <div className="mt-7 rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6">
               <p className="text-sm font-semibold text-white">
                 Not sure which category fits?
               </p>
@@ -121,8 +130,8 @@ export default function ContactHero() {
           </div>
         </div>
 
-        <div className="mt-14 grid gap-6 border-t border-white/10 pt-7 sm:grid-cols-3">
-          <div>
+        <div className="mt-12 grid gap-0 border-t border-white/10 pt-7 sm:mt-14 sm:grid-cols-3">
+          <div className="pb-6 sm:pb-0 sm:pr-6">
             <p className="text-sm font-semibold text-white">
               Start with context
             </p>
@@ -132,7 +141,7 @@ export default function ContactHero() {
             </p>
           </div>
 
-          <div>
+          <div className="border-t border-white/10 py-6 sm:border-l sm:border-t-0 sm:px-6 sm:py-0">
             <p className="text-sm font-semibold text-white">
               Discuss the right approach
             </p>
@@ -143,7 +152,7 @@ export default function ContactHero() {
             </p>
           </div>
 
-          <div>
+          <div className="border-t border-white/10 pt-6 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
             <p className="text-sm font-semibold text-white">
               Build the right team
             </p>

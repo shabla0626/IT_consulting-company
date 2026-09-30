@@ -3,116 +3,130 @@ import Link from "next/link";
 const insights = [
   {
     category: "AI & Data",
-    title: "Moving from AI experiments to reliable production systems",
+    title: "From AI experiments to production systems",
     description:
-      "What organizations should consider when turning prototypes into secure, scalable, maintainable AI products.",
-    date: "September 2026",
+      "A practical perspective on moving AI initiatives beyond prototypes by focusing on data, evaluation, architecture, operations, and security.",
     href: "/insights/ai-production-systems",
+    accent: "text-violet-700",
+    soft: "bg-violet-50",
+    border: "border-violet-100",
   },
   {
     category: "Cloud",
-    title: "Modernization without rewriting everything",
+    title: "Practical cloud modernization without unnecessary disruption",
     description:
-      "A practical approach to reducing legacy technology risk while continuing to deliver business value.",
-    date: "September 2026",
+      "How organizations can modernize cloud foundations while balancing platform strategy, architecture, delivery, reliability, and ownership.",
     href: "/insights/practical-cloud-modernization",
+    accent: "text-sky-700",
+    soft: "bg-sky-50",
+    border: "border-sky-100",
   },
   {
-    category: "Engineering",
-    title: "What makes a software platform easier to scale",
+    category: "Software Engineering",
+    title: "Building software platforms that can scale with the business",
     description:
-      "Architecture, developer experience, observability, and operational practices that support sustainable growth.",
-    date: "August 2026",
+      "A perspective on architecture, APIs, platform engineering, developer experience, observability, and long-term ownership.",
     href: "/insights/scalable-software-platforms",
+    accent: "text-cyan-700",
+    soft: "bg-cyan-50",
+    border: "border-cyan-100",
   },
 ];
 
 export default function Insights() {
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24 lg:px-8 lg:py-32">
+    <section className="bg-white py-20 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Heading */}
-        <div className="flex flex-col gap-8 border-b border-neutral-200 pb-10 lg:flex-row lg:items-end lg:justify-between">
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-600">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
               Insights
             </p>
 
-            <h2 className="mt-5 max-w-3xl text-4xl font-semibold tracking-[-0.035em] text-neutral-950 sm:text-5xl">
-              Ideas for building better technology organizations.
+            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Practical thinking for
+              <span className="block text-slate-500">
+                complex technology decisions.
+              </span>
             </h2>
+          </div>
+
+          <div className="max-w-2xl lg:justify-self-end">
+            <p className="text-base leading-7 text-slate-600">
+              Explore long-form perspectives on software engineering, cloud,
+              data, AI, architecture, delivery, and the decisions that shape
+              modern technology systems.
+            </p>
+          </div>
+        </div>
+
+        {/* Articles */}
+        <div className="mt-12 grid gap-5 sm:mt-14 md:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-6">
+          {insights.map((article) => (
+            <Link
+              key={article.href}
+              href={article.href}
+              className={`group flex min-w-0 flex-col rounded-3xl border ${article.border} ${article.soft} p-6 transition duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl hover:shadow-slate-950/5 sm:p-7 lg:p-8`}
+            >
+              <div>
+                <p
+                  className={`text-xs font-semibold uppercase tracking-[0.16em] ${article.accent}`}
+                >
+                  {article.category}
+                </p>
+
+                <h3 className="mt-5 text-xl font-semibold leading-snug tracking-tight text-slate-950 sm:text-2xl">
+                  {article.title}
+                </h3>
+
+                <p className="mt-4 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+                  {article.description}
+                </p>
+              </div>
+
+              <div className="mt-auto pt-7">
+                <div className="flex items-center justify-between border-t border-slate-900/5 pt-5">
+                  <span className={`text-sm font-semibold ${article.accent}`}>
+                    Read perspective
+                  </span>
+
+                  <span
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white bg-white text-slate-700 shadow-sm transition group-hover:border-slate-950 group-hover:bg-slate-950 group-hover:text-white"
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Editorial note + route */}
+        <div className="mt-12 grid gap-8 rounded-3xl bg-slate-50 p-7 ring-1 ring-slate-200 sm:mt-14 sm:p-9 lg:mt-16 lg:grid-cols-[1fr_auto] lg:items-center lg:p-10">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+              Editorial Context
+            </p>
+
+            <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+              Current articles are representative editorial content used to
+              establish the Insights experience. Production content should be
+              replaced with real published perspectives, verified authorship,
+              and appropriate publication information.
+            </p>
           </div>
 
           <Link
             href="/insights"
-            className="group inline-flex items-center gap-2 text-sm font-semibold text-neutral-950"
+            className="inline-flex min-h-11 w-fit items-center justify-center rounded-full bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800"
           >
-            View all insights
-
-            <span
-              className="transition-transform group-hover:translate-x-1"
-              aria-hidden="true"
-            >
+            Explore All Insights
+            <span className="ml-2" aria-hidden="true">
               →
             </span>
           </Link>
-        </div>
-
-        {/* Articles */}
-        <div className="grid border-b border-neutral-200 lg:grid-cols-3">
-          {insights.map((insight, index) => (
-            <article
-              key={insight.title}
-              className={`group py-8 lg:py-10 ${
-                index !== insights.length - 1
-                  ? "border-b border-neutral-200 lg:border-b-0 lg:border-r"
-                  : ""
-              } ${
-                index === 0
-                  ? "lg:pr-8"
-                  : index === 1
-                    ? "lg:px-8"
-                    : "lg:pl-8"
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-indigo-600">
-                  {insight.category}
-                </p>
-
-                <p className="text-xs text-neutral-400">
-                  {insight.date}
-                </p>
-              </div>
-
-              <h3 className="mt-8 text-2xl font-semibold tracking-tight text-neutral-950">
-                <Link
-                  href={insight.href}
-                  className="transition-colors group-hover:text-indigo-600"
-                >
-                  {insight.title}
-                </Link>
-              </h3>
-
-              <p className="mt-4 text-base leading-7 text-neutral-600">
-                {insight.description}
-              </p>
-
-              <Link
-                href={insight.href}
-                className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-neutral-950"
-              >
-                Read article
-
-                <span
-                  className="transition-transform group-hover:translate-x-1"
-                  aria-hidden="true"
-                >
-                  →
-                </span>
-              </Link>
-            </article>
-          ))}
         </div>
       </div>
     </section>

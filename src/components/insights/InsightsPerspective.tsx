@@ -1,117 +1,71 @@
 const principles = [
   {
-    number: "01",
-    title: "Context before conclusions.",
+    title: "Start with the problem",
     description:
-      "Technology decisions depend on the business problem, operating environment, users, constraints, existing systems, risk, and the capabilities of the team that will own the result.",
+      "Useful technical thinking begins with context rather than with a preferred technology or trend.",
   },
   {
-    number: "02",
-    title: "Trade-offs are part of the answer.",
+    title: "Make trade-offs visible",
     description:
-      "There is rarely one universally correct architecture, platform, model, or engineering practice. Good decisions make the trade-offs visible and choose deliberately.",
+      "Architecture and engineering decisions involve constraints. Good analysis explains what is gained and what is accepted.",
   },
   {
-    number: "03",
-    title: "Production reality matters.",
+    title: "Think beyond the prototype",
     description:
-      "A promising prototype is not the same as a dependable production system. Reliability, security, observability, operations, cost, and ownership all matter.",
-  },
-  {
-    number: "04",
-    title: "Use the simplest approach that works.",
-    description:
-      "More technology does not automatically create more value. We prefer solutions that are understandable, proportionate to the problem, and sustainable over time.",
+      "Production technology also needs reliability, security, observability, operations, and ownership.",
   },
 ];
 
 export default function InsightsPerspective() {
   return (
-    <section className="bg-slate-950 py-24 text-white sm:py-28">
+    <section className="bg-white py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-300">
-              Our Perspective
-            </p>
-
-            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight sm:text-4xl">
-              Less hype.
-              <span className="block text-slate-400">
-                More useful technical judgment.
-              </span>
-            </h2>
-
-            <p className="mt-6 max-w-xl text-base leading-7 text-slate-300">
-              Our goal is not to publish technology commentary for its own
-              sake. We want to explore the decisions that affect real systems,
-              teams, products, and organizations.
-            </p>
-
-            <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
-              <p className="text-sm font-semibold text-white">
-                The question behind most of our writing
+        <div className="overflow-hidden rounded-3xl bg-slate-950 text-white">
+          <div className="grid lg:grid-cols-[0.82fr_1.18fr]">
+            <div className="p-7 sm:p-9 lg:p-12">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-indigo-300 sm:text-sm">
+                Editorial Perspective
               </p>
 
-              <p className="mt-3 text-sm leading-6 text-slate-300">
-                What is the most practical way to solve this problem in the
-                context of the organization that actually has to build,
-                operate, secure, and maintain the result?
-              </p>
-            </div>
-          </div>
+              <h2 className="mt-4 max-w-lg text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">
+                Technology thinking should help teams make better decisions.
+              </h2>
 
-          <div className="grid gap-5 sm:grid-cols-2">
-            {principles.map((principle) => (
-              <article
-                key={principle.number}
-                className="rounded-3xl border border-white/10 bg-white/5 p-7 transition duration-300 hover:border-white/20 hover:bg-white/[0.07] sm:p-8"
-              >
-                <span className="text-sm font-semibold tracking-[0.18em] text-indigo-300">
-                  {principle.number}
-                </span>
-
-                <h3 className="mt-6 text-xl font-semibold tracking-tight text-white">
-                  {principle.title}
-                </h3>
-
-                <p className="mt-4 text-sm leading-6 text-slate-300">
-                  {principle.description}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-16 border-t border-white/10 pt-10">
-          <div className="grid gap-8 md:grid-cols-3">
-            <div>
-              <p className="text-sm font-semibold text-white">
-                Practical
-              </p>
-              <p className="mt-2 text-sm leading-6 text-slate-400">
-                Focused on decisions teams can actually apply.
+              <p className="mt-5 max-w-xl text-sm leading-7 text-slate-300 sm:text-base">
+                The aim is not to publish commentary for its own sake. Useful
+                insight should connect technical choices with practical
+                consequences for architecture, delivery, operation, and
+                ownership.
               </p>
             </div>
 
-            <div>
-              <p className="text-sm font-semibold text-white">
-                Evidence-aware
-              </p>
-              <p className="mt-2 text-sm leading-6 text-slate-400">
-                Clear about assumptions, uncertainty, and what still needs
-                validation.
-              </p>
-            </div>
+            <div className="border-t border-white/10 p-7 sm:p-9 lg:border-l lg:border-t-0 lg:p-12">
+              <div className="space-y-7">
+                {principles.map((principle, index) => (
+                  <div
+                    key={principle.title}
+                    className={
+                      index > 0 ? "border-t border-white/10 pt-7" : ""
+                    }
+                  >
+                    <div className="flex gap-4">
+                      <span className="text-xs font-semibold tracking-[0.16em] text-indigo-300">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
 
-            <div>
-              <p className="text-sm font-semibold text-white">
-                Long-term
-              </p>
-              <p className="mt-2 text-sm leading-6 text-slate-400">
-                Interested in what remains maintainable after the initial
-                implementation.
-              </p>
+                      <div>
+                        <h3 className="text-base font-semibold text-white">
+                          {principle.title}
+                        </h3>
+
+                        <p className="mt-2 text-sm leading-6 text-slate-400">
+                          {principle.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -3,36 +3,39 @@ import Link from "next/link";
 const insights = [
   {
     number: "01",
-    category: "AI & Data",
-    title: "Designing AI systems for production, not just prototypes.",
+    topic: "AI & Data",
+    title: "What it takes to move AI systems into production.",
     description:
-      "A practical perspective on what changes when AI moves from experimentation into real applications: data quality, evaluation, observability, reliability, security, and operational ownership.",
+      "A practical perspective on use cases, trusted data, evaluation, software integration, observability, and operational ownership.",
     href: "/insights/ai-production-systems",
-    accent: "text-violet-600",
-    soft: "bg-violet-50",
+    accent: "text-violet-700",
+    surface: "bg-violet-50",
     border: "border-violet-100",
+    dot: "bg-violet-500",
   },
   {
     number: "02",
-    category: "Cloud & DevOps",
-    title: "Practical cloud modernization without unnecessary complexity.",
+    topic: "Cloud & DevOps",
+    title: "A practical approach to cloud modernization.",
     description:
-      "A look at how organizations can modernize applications, infrastructure, delivery practices, and operational capabilities without treating every problem as a full rewrite.",
+      "Modernization works best when infrastructure, applications, delivery practices, reliability, and team ownership evolve together.",
     href: "/insights/practical-cloud-modernization",
-    accent: "text-sky-600",
-    soft: "bg-sky-50",
+    accent: "text-sky-700",
+    surface: "bg-sky-50",
     border: "border-sky-100",
+    dot: "bg-sky-500",
   },
   {
     number: "03",
-    category: "Software Engineering",
-    title: "Building software platforms that can evolve with the business.",
+    topic: "Software Engineering",
+    title: "Designing software platforms that can continue to scale.",
     description:
-      "Thoughts on architecture, APIs, platform engineering, developer experience, quality, and the engineering decisions that help software remain adaptable over time.",
+      "Architecture, APIs, quality, observability, developer experience, and ownership all influence how effectively software can evolve.",
     href: "/insights/scalable-software-platforms",
     accent: "text-cyan-700",
-    soft: "bg-cyan-50",
+    surface: "bg-cyan-50",
     border: "border-cyan-100",
+    dot: "bg-cyan-500",
   },
 ];
 
@@ -40,97 +43,91 @@ export default function FeaturedInsights() {
   return (
     <section
       id="featured-insights"
-      className="bg-slate-50 py-24 sm:py-28"
+      className="scroll-mt-24 bg-white py-20 sm:py-24 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:gap-16">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600">
-              Featured Insights
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
+              Featured Perspectives
             </p>
 
-            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-              Thinking shaped by
+            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Go deeper into
               <span className="block text-slate-500">
-                real technology decisions.
+                the decisions behind the technology.
               </span>
             </h2>
-
-            <p className="mt-6 max-w-xl text-base leading-7 text-slate-600">
-              Our Insights section is designed to share practical perspectives
-              on architecture, engineering, modernization, AI, cloud, security,
-              and the trade-offs involved in building technology that lasts.
-            </p>
-
-            <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-5">
-              <p className="text-sm leading-6 text-amber-900">
-                <span className="font-semibold">Editorial note:</span>{" "}
-                These articles are currently representative content. Publication
-                dates, author details, and final article copy should only be
-                added when real company content is ready.
-              </p>
-            </div>
           </div>
 
-          <div className="space-y-5">
-            {insights.map((insight) => (
-              <Link
-                key={insight.href}
-                href={insight.href}
-                className="group block overflow-hidden rounded-3xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-950/5"
-              >
-                <div className="grid sm:grid-cols-[96px_1fr_auto]">
-                  <div
-                    className={`${insight.soft} flex items-start justify-center px-5 py-8`}
-                  >
-                    <span
-                      className={`text-sm font-semibold tracking-[0.18em] ${insight.accent}`}
-                    >
-                      {insight.number}
-                    </span>
-                  </div>
-
-                  <div className="px-7 py-7 sm:px-8">
-                    <div className="flex flex-wrap items-center gap-3">
-                      <span
-                        className={`text-xs font-semibold uppercase tracking-[0.16em] ${insight.accent}`}
-                      >
-                        {insight.category}
-                      </span>
-
-                      <span className="h-1 w-1 rounded-full bg-slate-300" />
-
-                      <span className="text-xs font-medium text-slate-500">
-                        Perspective
-                      </span>
-                    </div>
-
-                    <h3 className="mt-4 max-w-2xl text-xl font-semibold tracking-tight text-slate-950">
-                      {insight.title}
-                    </h3>
-
-                    <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">
-                      {insight.description}
-                    </p>
-
-                    <p className={`mt-5 text-sm font-semibold ${insight.accent}`}>
-                      Read perspective
-                    </p>
-                  </div>
-
-                  <div className="flex items-center px-7 pb-7 sm:pb-0">
-                    <span
-                      className={`flex h-11 w-11 items-center justify-center rounded-full border ${insight.border} bg-white text-slate-700 transition group-hover:bg-slate-950 group-hover:text-white`}
-                      aria-hidden="true"
-                    >
-                      →
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <p className="max-w-2xl text-base leading-7 text-slate-600 lg:justify-self-end">
+            Long-form perspectives designed around practical engineering,
+            architecture, delivery, and production considerations rather than
+            trend commentary alone.
+          </p>
         </div>
+
+        <div className="mt-12 grid gap-5 sm:mt-14 md:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-6">
+          {insights.map((insight) => (
+            <article
+              key={insight.href}
+              className="flex min-w-0 flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white"
+            >
+              <div
+                className={`border-b ${insight.border} ${insight.surface} p-6 sm:p-7`}
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <span
+                    className={`text-xs font-semibold tracking-[0.18em] ${insight.accent}`}
+                  >
+                    {insight.number}
+                  </span>
+
+                  <span
+                    className={`h-2 w-2 shrink-0 rounded-full ${insight.dot}`}
+                    aria-hidden="true"
+                  />
+                </div>
+
+                <p
+                  className={`mt-8 text-xs font-semibold uppercase tracking-[0.16em] ${insight.accent}`}
+                >
+                  {insight.topic}
+                </p>
+              </div>
+
+              <div className="flex flex-1 flex-col p-6 sm:p-7">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                  Representative Editorial
+                </p>
+
+                <h3 className="mt-4 text-xl font-semibold tracking-tight text-slate-950 sm:text-2xl">
+                  {insight.title}
+                </h3>
+
+                <p className="mt-4 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+                  {insight.description}
+                </p>
+
+                <Link
+                  href={insight.href}
+                  className={`mt-auto inline-flex min-h-11 items-center pt-7 text-sm font-semibold ${insight.accent}`}
+                >
+                  Read perspective
+                  <span className="ml-2" aria-hidden="true">
+                    →
+                  </span>
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <p className="mt-6 text-xs leading-5 text-slate-500">
+          Development note: these are representative editorial pieces. Add
+          verified authors, publication dates, and approved content before
+          presenting them as published company articles.
+        </p>
       </div>
     </section>
   );

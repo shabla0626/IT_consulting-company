@@ -1,105 +1,93 @@
 const beliefs = [
   {
     number: "01",
-    title: "Good technology starts with good judgment.",
+    title: "The problem comes before the technology",
     description:
-      "The strongest technical solution is not always the newest or most complex. We value clear thinking, explicit trade-offs, and decisions grounded in the real context of the organization.",
+      "A technology choice only makes sense in the context of the users, systems, organization, constraints, and outcomes around it.",
   },
   {
     number: "02",
-    title: "Business and technology should stay connected.",
+    title: "Engineering quality is a business concern",
     description:
-      "Architecture, engineering, cloud, data, AI, and security decisions are most useful when they remain connected to the problem the organization is actually trying to solve.",
+      "Maintainability, reliability, security, observability, and delivery quality influence how effectively an organization can keep changing.",
   },
   {
     number: "03",
-    title: "Quality is part of delivery.",
+    title: "Simple is valuable when it is sufficient",
     description:
-      "Testing, observability, security, reliability, maintainability, and operational readiness should be built into the work rather than treated as final-stage activities.",
+      "Complexity should be introduced because the problem requires it, not because the technology makes it possible.",
   },
   {
     number: "04",
-    title: "Clarity beats unnecessary complexity.",
+    title: "Ownership should improve through the engagement",
     description:
-      "We prefer systems, processes, and architectures that teams can understand, operate, and evolve confidently instead of introducing complexity without a clear reason.",
+      "Good consulting should strengthen the client's ability to understand, operate, maintain, and evolve what is delivered.",
   },
   {
     number: "05",
-    title: "Ownership should grow during the engagement.",
+    title: "Disciplines work better together",
     description:
-      "Consulting should strengthen the client team. Knowledge, documentation, technical context, and operational capability should become more distributed as the work progresses.",
+      "Software, cloud, data, AI, security, architecture, and product decisions often affect the same underlying system.",
   },
   {
     number: "06",
-    title: "The best teams cross disciplines.",
+    title: "Trade-offs should be visible",
     description:
-      "Complex technology problems often span software, cloud, data, AI, security, operations, product, and business context. We believe those perspectives should work together around the same outcome.",
+      "Strong technical decisions explain the constraints, alternatives, implications, and reasons behind the chosen direction.",
   },
 ];
 
 export default function WhatWeBelieve() {
   return (
-    <section className="bg-white py-24 sm:py-28">
+    <section className="bg-white py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600">
-            What We Believe
-          </p>
+        <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:gap-16">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
+              What We Believe
+            </p>
 
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-            Principles that shape
-            <span className="block text-slate-500">
-              how we make decisions and deliver.
-            </span>
-          </h2>
+            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Principles that shape
+              <span className="block text-slate-500">
+                technical decisions and delivery.
+              </span>
+            </h2>
+          </div>
 
-          <p className="mt-6 max-w-2xl text-base leading-7 text-slate-600">
-            These principles guide how we approach technology, how we work with
-            client teams, and how we think about the long-term value of the
-            systems we help build.
+          <p className="max-w-2xl text-base leading-7 text-slate-600 lg:justify-self-end">
+            Methods and technologies will continue changing. The principles
+            behind useful consulting and sustainable engineering should be more
+            durable.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-5 sm:mt-14 md:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-6">
           {beliefs.map((belief) => (
             <article
               key={belief.number}
-              className="rounded-3xl border border-slate-200 bg-slate-50 p-7 transition duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl hover:shadow-slate-950/5 sm:p-8"
+              className="rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:p-7 lg:p-8"
             >
-              <span className="text-sm font-semibold tracking-[0.18em] text-indigo-600">
-                {belief.number}
-              </span>
+              <div className="flex items-center justify-between gap-4">
+                <span className="text-xs font-semibold tracking-[0.18em] text-indigo-700">
+                  {belief.number}
+                </span>
+
+                <span
+                  className="h-2 w-2 rounded-full bg-indigo-500"
+                  aria-hidden="true"
+                />
+              </div>
 
               <h3 className="mt-6 text-xl font-semibold tracking-tight text-slate-950">
                 {belief.title}
               </h3>
 
-              <p className="mt-4 text-sm leading-6 text-slate-600">
+              <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
                 {belief.description}
               </p>
             </article>
           ))}
-        </div>
-
-        <div className="mt-16 rounded-3xl border border-indigo-100 bg-indigo-50 p-8 sm:p-10 lg:p-12">
-          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-700">
-                A Simple Standard
-              </p>
-
-              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
-                Leave the client in a stronger position.
-              </h3>
-            </div>
-
-            <p className="text-base leading-7 text-slate-700">
-              The work should create more than a technical deliverable. It
-              should leave behind stronger systems, clearer decisions,
-              improved engineering foundations, useful knowledge, and a better
-              ability to handle what comes next.
-            </p>
-          </div>
         </div>
       </div>
     </section>

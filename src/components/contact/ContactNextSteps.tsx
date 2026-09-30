@@ -27,11 +27,11 @@ const steps = [
 
 export default function ContactNextSteps() {
   return (
-    <section className="bg-white py-24 sm:py-28">
+    <section className="bg-white py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-700">
+        <div className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-start lg:gap-16 xl:gap-20">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
               What Happens Next?
             </p>
 
@@ -42,7 +42,7 @@ export default function ContactNextSteps() {
               </span>
             </h2>
 
-            <p className="mt-6 max-w-xl text-base leading-7 text-slate-600">
+            <p className="mt-5 max-w-xl text-base leading-7 text-slate-600 sm:mt-6">
               The first conversation is about understanding the situation, not
               forcing a predefined service. The goal is to establish whether
               there is a useful way to work together and what that should look
@@ -56,22 +56,22 @@ export default function ContactNextSteps() {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50">
+          <div className="min-w-0 overflow-hidden rounded-3xl border border-slate-200 bg-slate-50">
             {steps.map((step, index) => (
               <article
                 key={step.number}
-                className={`grid gap-5 p-7 sm:p-8 md:grid-cols-[80px_1fr] ${
+                className={`grid min-w-0 gap-4 p-6 sm:p-7 md:grid-cols-[72px_minmax(0,1fr)] md:gap-5 md:p-8 ${
                   index !== steps.length - 1
                     ? "border-b border-slate-200"
                     : ""
                 }`}
               >
-                <span className="text-sm font-semibold tracking-[0.18em] text-indigo-700">
+                <span className="text-xs font-semibold tracking-[0.18em] text-indigo-700 sm:text-sm">
                   {step.number}
                 </span>
 
-                <div>
-                  <h3 className="text-xl font-semibold tracking-tight text-slate-950">
+                <div className="min-w-0">
+                  <h3 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
                     {step.title}
                   </h3>
 
@@ -84,10 +84,10 @@ export default function ContactNextSteps() {
           </div>
         </div>
 
-        <div className="mt-16 rounded-3xl bg-slate-950 p-8 text-white sm:p-10 lg:p-12">
-          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-indigo-300">
+        <div className="mt-12 rounded-3xl bg-slate-950 p-6 text-white sm:mt-16 sm:p-8 lg:p-10 xl:p-12">
+          <div className="grid gap-7 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-10">
+            <div className="min-w-0">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-indigo-300 sm:text-sm">
                 No Forced Fit
               </p>
 
@@ -96,7 +96,7 @@ export default function ContactNextSteps() {
               </h3>
             </div>
 
-            <p className="text-base leading-7 text-slate-300">
+            <p className="min-w-0 text-base leading-7 text-slate-300">
               A useful initial conversation should help determine the real
               problem, the level of support required, and whether Nexora is the
               right fit. The next step should follow from that understanding,

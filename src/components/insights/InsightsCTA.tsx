@@ -2,30 +2,32 @@ import Link from "next/link";
 
 export default function InsightsCTA() {
   return (
-    <section className="bg-indigo-700 py-20 text-white sm:py-24">
+    <section className="bg-slate-50 py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-200">
-              Turn Insight Into Action
+        <div className="grid gap-10 rounded-[2rem] border border-slate-200 bg-white p-7 sm:p-9 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16 lg:p-12">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
+              From Perspective to Practice
             </p>
 
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-              Thinking about a technology decision your team needs to make?
+            <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Working through a similar
+              <span className="block text-slate-500">
+                technology decision?
+              </span>
             </h2>
 
-            <p className="mt-5 max-w-2xl text-base leading-7 text-indigo-100">
-              Whether you are evaluating architecture, modernizing a platform,
-              exploring AI, improving cloud foundations, or addressing an
-              engineering challenge, we can help turn the discussion into a
-              practical technical direction.
+            <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600">
+              We can help connect the architecture, engineering, cloud, data,
+              AI, security, and delivery questions around the challenge you are
+              working through.
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:justify-end">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-indigo-950/20 transition hover:bg-slate-100"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-slate-950 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-950/10 sm:w-auto"
             >
               Talk to an Expert
               <span className="ml-2" aria-hidden="true">
@@ -34,44 +36,11 @@ export default function InsightsCTA() {
             </Link>
 
             <Link
-              href="/solutions"
-              className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
+              href="/work"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-800 transition hover:bg-slate-100 focus:outline-none focus:ring-4 focus:ring-slate-950/5 sm:w-auto"
             >
-              Explore Solutions
+              Explore Our Work
             </Link>
-          </div>
-        </div>
-
-        <div className="mt-12 border-t border-white/15 pt-8">
-          <div className="grid gap-6 sm:grid-cols-3">
-            <div>
-              <p className="text-sm font-semibold text-white">
-                Architecture
-              </p>
-              <p className="mt-2 text-sm leading-6 text-indigo-100">
-                Evaluate technical options and make trade-offs explicit.
-              </p>
-            </div>
-
-            <div>
-              <p className="text-sm font-semibold text-white">
-                Modernization
-              </p>
-              <p className="mt-2 text-sm leading-6 text-indigo-100">
-                Define a practical path from the current environment to what
-                comes next.
-              </p>
-            </div>
-
-            <div>
-              <p className="text-sm font-semibold text-white">
-                Engineering Strategy
-              </p>
-              <p className="mt-2 text-sm leading-6 text-indigo-100">
-                Connect technology decisions with delivery, operations, and
-                long-term ownership.
-              </p>
-            </div>
           </div>
         </div>
       </div>

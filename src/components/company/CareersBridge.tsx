@@ -1,87 +1,86 @@
 import Link from "next/link";
 
-const teams = [
-  "Engineering",
-  "Design",
-  "Cloud",
-  "Data & AI",
-  "Consulting",
+const careerPoints = [
+  "Work on multidisciplinary technology problems",
+  "Learn alongside experienced practitioners",
+  "Develop depth without losing broader context",
 ];
 
 export default function CareersBridge() {
   return (
-    <section className="bg-white py-24 sm:py-28">
+    <section className="bg-slate-50 py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-violet-50 via-white to-fuchsia-50">
-          <div className="grid gap-12 p-8 sm:p-10 lg:grid-cols-[1fr_0.9fr] lg:p-12">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-violet-700">
-                Build With Us
+        <div className="overflow-hidden rounded-[2rem] border border-violet-100 bg-white">
+          <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
+            <div className="p-7 sm:p-9 lg:p-12">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-violet-700 sm:text-sm">
+                Careers
               </p>
 
-              <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-                Do meaningful technology work
+              <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+                The company we build
                 <span className="block text-slate-500">
-                  with people who care about the craft.
+                  depends on the people building it.
                 </span>
               </h2>
 
-              <p className="mt-6 max-w-2xl text-base leading-7 text-slate-600">
-                We want to build teams that combine strong technical judgment,
-                curiosity, collaboration, and a real sense of ownership. The
-                work spans software, cloud, data, AI, security, design, and
-                consulting.
+              <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600">
+                We want Careers to be more than a list of vacancies. It should
+                explain the kind of work, teams, learning, culture, and
+                professional environment candidates could become part of.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="/careers"
+                className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-violet-700 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-violet-800 focus:outline-none focus:ring-4 focus:ring-violet-700/10 sm:w-auto"
+              >
+                Explore Careers
+
+                <span className="ml-2" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+            </div>
+
+            <div className="border-t border-violet-100 bg-violet-50 p-7 sm:p-9 lg:border-l lg:border-t-0 lg:p-12">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-violet-700">
+                People + Technology
+              </p>
+
+              <div className="mt-7 space-y-5">
+                {careerPoints.map((point, index) => (
+                  <div
+                    key={point}
+                    className={`flex gap-4 ${
+                      index > 0 ? "border-t border-violet-200 pt-5" : ""
+                    }`}
+                  >
+                    <span className="text-xs font-semibold tracking-[0.16em] text-violet-700">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    <p className="text-sm font-semibold leading-6 text-slate-800 sm:text-base">
+                      {point}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 rounded-2xl border border-violet-200 bg-white p-5">
+                <p className="text-sm font-semibold text-slate-950">
+                  Looking for open positions?
+                </p>
+
                 <Link
-                  href="/careers"
-                  className="inline-flex items-center justify-center rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+                  href="/careers/jobs"
+                  className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-violet-700 transition hover:text-violet-900"
                 >
-                  Explore Careers
+                  View open roles
+
                   <span className="ml-2" aria-hidden="true">
                     →
                   </span>
                 </Link>
-
-                <Link
-                  href="/careers/jobs"
-                  className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition hover:border-slate-400 hover:bg-slate-50"
-                >
-                  View Open Roles
-                </Link>
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-white/80 bg-white/80 p-7 shadow-sm backdrop-blur sm:p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
-                Teams
-              </p>
-
-              <div className="mt-6 space-y-4">
-                {teams.map((team, index) => (
-                  <div
-                    key={team}
-                    className="flex items-center justify-between border-b border-slate-200 pb-4 last:border-b-0 last:pb-0"
-                  >
-                    <div className="flex items-center gap-4">
-                      <span className="text-xs font-semibold tracking-[0.16em] text-violet-600">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-
-                      <p className="text-sm font-medium text-slate-800">
-                        {team}
-                      </p>
-                    </div>
-
-                    <span
-                      className="flex h-9 w-9 items-center justify-center rounded-full bg-violet-50 text-violet-700"
-                      aria-hidden="true"
-                    >
-                      →
-                    </span>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

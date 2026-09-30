@@ -1,67 +1,116 @@
-const principles = [
+const perspectives = [
   {
     number: "01",
-    title: "Context before technology",
+    title: "Business context",
     description:
-      "We start by understanding the operating environment, business problem, users, constraints, and existing systems before choosing a technical direction.",
+      "Technology choices need to support the operating model, customer expectations, priorities, and pace of change around them.",
   },
   {
     number: "02",
-    title: "Architecture for change",
+    title: "Technology reality",
     description:
-      "We favor technology foundations that can evolve as products, customer expectations, processes, and organizations change.",
+      "Existing systems, architecture, data, integrations, security requirements, and engineering maturity shape what is practical.",
   },
   {
     number: "03",
-    title: "Engineering with ownership",
+    title: "Delivery constraints",
     description:
-      "Solutions should be understandable, maintainable, observable, and practical for the teams responsible for them after delivery.",
+      "Risk, organizational readiness, dependencies, timelines, and internal capability influence how change should be introduced.",
   },
 ];
 
 export default function IndustryPerspective() {
   return (
-    <section className="bg-slate-50 py-24 sm:py-28">
+    <section className="bg-slate-50 py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600">
-            Our Perspective
-          </p>
+        <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:gap-16">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
+              Our Perspective
+            </p>
 
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-            Different industries.
-            <span className="block text-slate-500">
-              The same delivery discipline.
-            </span>
-          </h2>
+            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Context changes
+              <span className="block text-slate-500">
+                the right technical answer.
+              </span>
+            </h2>
+          </div>
 
-          <p className="mt-6 text-base leading-7 text-slate-600">
-            Industry expertise matters most when it improves technology
-            decisions. We combine domain context with software, cloud, data,
-            AI, and security capabilities rather than treating them as separate
-            conversations.
+          <p className="max-w-2xl text-base leading-7 text-slate-600 lg:justify-self-end">
+            Strong engineering principles remain important everywhere, but the
+            right architecture, roadmap, delivery approach, and team shape
+            depend on the environment in which the technology has to work.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {principles.map((principle) => (
+        <div className="mt-12 grid gap-5 sm:mt-14 md:grid-cols-3 lg:mt-16 lg:gap-6">
+          {perspectives.map((perspective) => (
             <article
-              key={principle.number}
-              className="rounded-3xl border border-slate-200 bg-white p-8"
+              key={perspective.number}
+              className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-7 lg:p-8"
             >
-              <span className="text-sm font-semibold tracking-[0.16em] text-indigo-600">
-                {principle.number}
+              <span className="text-xs font-semibold tracking-[0.18em] text-indigo-700">
+                {perspective.number}
               </span>
 
-              <h3 className="mt-6 text-xl font-semibold text-slate-950">
-                {principle.title}
+              <h3 className="mt-6 text-xl font-semibold tracking-tight text-slate-950">
+                {perspective.title}
               </h3>
 
-              <p className="mt-4 text-sm leading-6 text-slate-600">
-                {principle.description}
+              <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+                {perspective.description}
               </p>
             </article>
           ))}
+        </div>
+
+        <div className="mt-12 overflow-hidden rounded-3xl bg-slate-950 text-white sm:mt-14 lg:mt-16">
+          <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="p-7 sm:p-9 lg:p-12">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-indigo-300 sm:text-sm">
+                Industry + Expertise
+              </p>
+
+              <h3 className="mt-4 max-w-lg text-2xl font-semibold tracking-tight sm:text-3xl">
+                Industry knowledge works best when connected to engineering
+                depth.
+              </h3>
+
+              <p className="mt-5 max-w-xl text-sm leading-7 text-slate-300 sm:text-base">
+                Understanding the industry helps frame the problem. Software,
+                cloud, data, AI, security, design, and consulting capabilities
+                help solve it.
+              </p>
+            </div>
+
+            <div className="border-t border-white/10 p-7 sm:p-9 lg:border-l lg:border-t-0 lg:p-12">
+              <div className="grid gap-5 sm:grid-cols-2">
+                {[
+                  "Architecture and modernization",
+                  "Data and AI foundations",
+                  "Cloud and platform engineering",
+                  "Security and operational resilience",
+                  "Product and customer experience",
+                  "Engineering and delivery practices",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex gap-3 border-t border-white/10 pt-4"
+                  >
+                    <span
+                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-300"
+                      aria-hidden="true"
+                    />
+
+                    <p className="text-sm leading-6 text-slate-300">
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

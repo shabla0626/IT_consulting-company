@@ -1,192 +1,199 @@
 import Link from "next/link";
 
-const capabilities = [
-  "Software Engineering",
-  "AI & Data",
-  "Cloud & DevOps",
-  "Cybersecurity",
+const deliveryStages = [
+  {
+    number: "01",
+    title: "Discover",
+    description: "Understand the problem, users, systems, and constraints.",
+  },
+  {
+    number: "02",
+    title: "Design",
+    description: "Shape the architecture, experience, and delivery approach.",
+  },
+  {
+    number: "03",
+    title: "Build",
+    description: "Deliver with experienced multidisciplinary teams.",
+  },
+  {
+    number: "04",
+    title: "Scale",
+    description: "Improve reliability, capability, and long-term ownership.",
+  },
 ];
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white">
-      {/* Decorative background */}
-        <div
-        className="pointer-events-none absolute -right-32 -top-40 h-[520px] w-[520px] rounded-full bg-gradient-to-br from-indigo-200/70 via-violet-200/50 to-cyan-100/40 blur-3xl"
+    <section className="relative overflow-hidden bg-slate-950 text-white">
+      {/* Controlled background accents */}
+      <div
+        className="pointer-events-none absolute -right-32 -top-32 h-80 w-80 rounded-full bg-indigo-500/10 blur-3xl sm:h-96 sm:w-96"
         aria-hidden="true"
-        />
+      />
 
-        <div
-        className="pointer-events-none absolute -bottom-52 -left-40 h-[420px] w-[420px] rounded-full bg-gradient-to-br from-cyan-100/70 via-sky-100/40 to-transparent blur-3xl"
+      <div
+        className="pointer-events-none absolute -bottom-40 left-0 h-80 w-80 rounded-full bg-cyan-500/5 blur-3xl sm:left-1/4 sm:h-96 sm:w-96"
         aria-hidden="true"
-        />
+      />
 
-      <div className="relative mx-auto max-w-7xl px-6 py-20 sm:py-24 lg:px-8 lg:py-32">
-        <div className="grid items-center gap-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
-          {/* Left column */}
-          <div>
-            <div className="mb-8 flex items-center gap-3">
-              <span className="h-px w-10 bg-indigo-600" />
+      <div className="relative mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-8 lg:py-28">
+        <div className="grid gap-14 lg:grid-cols-[1.06fr_0.94fr] lg:items-center lg:gap-20">
+          {/* Main message */}
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-300 sm:text-sm">
+              Technology Consulting
+            </p>
 
-              <p className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-sm font-semibold uppercase tracking-[0.18em] text-transparent">
-                Technology Consulting
-              </p>
-            </div>
-
-            <h1 className="max-w-4xl text-5xl font-semibold leading-[0.98] tracking-[-0.045em] text-neutral-950 sm:text-6xl lg:text-7xl xl:text-[5.25rem]">
+            <h1 className="mt-5 max-w-4xl text-[2.5rem] font-semibold leading-[1.05] tracking-[-0.035em] text-white sm:text-5xl sm:leading-[1.04] lg:text-6xl xl:text-7xl">
               Build better technology.
-              <span className="mt-2 block bg-gradient-to-r from-indigo-600 via-violet-600 to-cyan-500 bg-clip-text text-transparent">
+              <span className="mt-1 block text-slate-400 sm:mt-2">
                 Move business forward.
               </span>
             </h1>
 
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-neutral-600 sm:text-xl">
-              We help organizations design, build, modernize, and scale digital
-              products, cloud platforms, data systems, and AI-powered
-              experiences.
+            <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:mt-7 sm:text-lg sm:leading-8">
+              We help organizations solve complex technology problems through
+              experienced teams spanning software engineering, cloud, data, AI,
+              security, design, and consulting.
             </p>
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <p className="mt-4 max-w-2xl text-sm leading-6 text-slate-400 sm:text-base sm:leading-7">
+              From strategy and architecture through hands-on delivery, we
+              focus on building technology that can evolve with the business.
+            </p>
+
+            {/* CTAs */}
+            <div className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-neutral-950 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-neutral-800"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-white/20 sm:w-auto"
               >
                 Talk to an Expert
+                <span className="ml-2" aria-hidden="true">
+                  →
+                </span>
               </Link>
 
               <Link
                 href="/work"
-                className="group inline-flex items-center justify-center gap-2 rounded-full border border-neutral-300 px-7 py-3.5 text-sm font-semibold text-neutral-900 transition hover:border-neutral-950"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10 focus:outline-none focus:ring-4 focus:ring-white/10 sm:w-auto"
               >
                 Explore Our Work
-
-                <span
-                  className="transition-transform group-hover:translate-x-1"
-                  aria-hidden="true"
-                >
-                  →
-                </span>
               </Link>
             </div>
 
-            {/* Capability list */}
-            <div className="mt-14 border-t border-neutral-200 pt-7">
-              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">
-                Core capabilities
+            {/* Capability strip */}
+            <div className="mt-10 border-t border-white/10 pt-6 sm:mt-12 sm:pt-7">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                Expertise across
               </p>
 
-              <div className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
-                {capabilities.map((capability) => (
-                  <div
-                    key={capability}
-                    className="flex items-center gap-3 text-sm font-medium text-neutral-700"
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3 text-sm font-medium text-slate-300">
+                <span>Software</span>
+                <span className="hidden text-slate-700 sm:inline">/</span>
 
-                    {capability}
-                  </div>
-                ))}
+                <span>Cloud</span>
+                <span className="hidden text-slate-700 sm:inline">/</span>
+
+                <span>Data & AI</span>
+                <span className="hidden text-slate-700 sm:inline">/</span>
+
+                <span>Security</span>
               </div>
             </div>
           </div>
 
-          {/* Right column */}
-          <div className="relative">
-            <div className="rounded-[2rem] border border-neutral-200 bg-neutral-950 p-6 shadow-2xl shadow-neutral-950/10 sm:p-8">
-              <div className="flex items-center justify-between border-b border-white/10 pb-6">
-                <div>
-                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-neutral-500">
-                    Digital Systems
-                  </p>
+          {/* Delivery panel */}
+          <div className="min-w-0">
+            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/20 backdrop-blur-sm">
+              <div className="border-b border-white/10 px-6 py-5 sm:px-7">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-indigo-300">
+                      How We Deliver
+                    </p>
 
-                  <p className="mt-2 text-lg font-medium text-white">
-                    From strategy to scale
-                  </p>
-                </div>
+                    <p className="mt-2 text-sm text-slate-400">
+                      From uncertainty to durable technology.
+                    </p>
+                  </div>
 
-                <div className="flex gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-neutral-600" />
-                  <span className="h-2 w-2 rounded-full bg-neutral-600" />
-                  <span className="h-2 w-2 rounded-full bg-indigo-500" />
-                </div>
-              </div>
-
-              <div className="py-10">
-                <div className="space-y-4">
-                  <ProcessRow number="01" title="Discover" />
-                  <ProcessRow number="02" title="Design" />
-                  <ProcessRow number="03" title="Build" />
-                  <ProcessRow number="04" title="Scale" active />
+                  <span
+                    className="hidden h-2 w-2 rounded-full bg-indigo-400 sm:block"
+                    aria-hidden="true"
+                  />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 border-t border-white/10 pt-6">
-                <Metric value="4×" label="Faster delivery" />
-                <Metric value="99.9%" label="Platform reliability" />
+              <div className="divide-y divide-white/10">
+                {deliveryStages.map((stage) => (
+                  <div
+                    key={stage.number}
+                    className="grid grid-cols-[42px_1fr] gap-4 px-6 py-5 sm:grid-cols-[54px_1fr] sm:px-7 sm:py-6"
+                  >
+                    <span className="pt-0.5 text-xs font-semibold tracking-[0.16em] text-indigo-300">
+                      {stage.number}
+                    </span>
+
+                    <div>
+                      <h2 className="text-base font-semibold text-white sm:text-lg">
+                        {stage.title}
+                      </h2>
+
+                      <p className="mt-1.5 text-sm leading-6 text-slate-400">
+                        {stage.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="border-t border-white/10 bg-white/[0.025] px-6 py-5 sm:px-7">
+                <p className="text-sm leading-6 text-slate-400">
+                  The exact engagement shape depends on the problem—not a
+                  predefined staffing model.
+                </p>
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Floating card */}
-            <div className="absolute -bottom-8 -left-5 hidden rounded-2xl border border-neutral-200 bg-white p-5 shadow-xl sm:block lg:-left-10">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-neutral-400">
-                Focus
+        {/* Bottom positioning statement */}
+        <div className="mt-14 border-t border-white/10 pt-7 sm:mt-16 lg:mt-20">
+          <div className="grid gap-5 sm:grid-cols-3 sm:gap-8">
+            <div>
+              <p className="text-sm font-semibold text-white">
+                Strategy + delivery
               </p>
 
-              <p className="mt-2 text-sm font-semibold text-neutral-900">
-                Business outcomes
+              <p className="mt-2 text-sm leading-6 text-slate-400">
+                Connect technology decisions with hands-on implementation.
+              </p>
+            </div>
+
+            <div className="border-t border-white/10 pt-5 sm:border-l sm:border-t-0 sm:pl-8 sm:pt-0">
+              <p className="text-sm font-semibold text-white">
+                Multidisciplinary teams
+              </p>
+
+              <p className="mt-2 text-sm leading-6 text-slate-400">
+                Bring together the expertise the problem actually requires.
+              </p>
+            </div>
+
+            <div className="border-t border-white/10 pt-5 sm:border-l sm:border-t-0 sm:pl-8 sm:pt-0">
+              <p className="text-sm font-semibold text-white">
+                Built for the long term
+              </p>
+
+              <p className="mt-2 text-sm leading-6 text-slate-400">
+                Prioritize quality, ownership, reliability, and maintainability.
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function ProcessRow({
-  number,
-  title,
-  active = false,
-}: {
-  number: string;
-  title: string;
-  active?: boolean;
-}) {
-  return (
-    <div
-      className={`flex items-center justify-between rounded-xl border px-5 py-4 ${
-        active
-          ? "border-indigo-500/50 bg-indigo-500/10"
-          : "border-white/10 bg-white/[0.03]"
-      }`}
-    >
-      <div className="flex items-center gap-5">
-        <span
-          className={`text-xs font-medium ${
-            active ? "text-indigo-400" : "text-neutral-600"
-          }`}
-        >
-          {number}
-        </span>
-
-        <span className="font-medium text-white">{title}</span>
-      </div>
-
-      <span
-        className={active ? "text-indigo-400" : "text-neutral-600"}
-        aria-hidden="true"
-      >
-        →
-      </span>
-    </div>
-  );
-}
-
-function Metric({ value, label }: { value: string; label: string }) {
-  return (
-    <div>
-      <p className="text-2xl font-semibold tracking-tight text-white">{value}</p>
-      <p className="mt-1 text-xs text-neutral-500">{label}</p>
-    </div>
   );
 }

@@ -2,78 +2,74 @@ import Link from "next/link";
 
 export default function CareersCTA() {
   return (
-    <section className="bg-slate-950 py-20 text-white sm:py-24">
+    <section className="bg-slate-50 py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-violet-300">
-              Your Next Step
-            </p>
+        <div className="relative overflow-hidden rounded-[2rem] bg-slate-950 px-6 py-10 text-white sm:px-8 sm:py-12 lg:px-12 lg:py-14">
+          <div
+            className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-violet-500/15 blur-3xl"
+            aria-hidden="true"
+          />
 
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-              Ready to see where you could contribute?
-            </h2>
+          <div
+            className="pointer-events-none absolute -bottom-24 left-0 h-56 w-56 rounded-full bg-fuchsia-500/10 blur-3xl"
+            aria-hidden="true"
+          />
 
-            <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300">
-              Explore current opportunities across engineering, cloud, data,
-              AI, security, design, and consulting. Each role will clearly
-              explain what the work involves, what we are looking for, and what
-              candidates can expect from the hiring process.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/careers/jobs"
-              className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
-            >
-              View Open Roles
-              <span className="ml-2" aria-hidden="true">
-                →
-              </span>
-            </Link>
-
-            <Link
-              href="/company"
-              className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
-            >
-              Learn About Nexora
-            </Link>
-          </div>
-        </div>
-
-        <div className="mt-12 border-t border-white/10 pt-8">
-          <div className="grid gap-7 md:grid-cols-3">
+          <div className="relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
             <div>
-              <p className="text-sm font-semibold text-white">
-                Explore the work
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-violet-300 sm:text-sm">
+                Your Next Step
               </p>
 
-              <p className="mt-2 text-sm leading-6 text-slate-400">
-                Understand the kind of technology challenges our teams work on.
+              <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
+                Interested in building
+                <span className="block text-slate-400">
+                  technology with us?
+                </span>
+              </h2>
+
+              <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300">
+                Explore current opportunities, read the role details carefully,
+                and apply to the position that best matches your experience and
+                direction.
               </p>
             </div>
 
-            <div>
+            <div className="rounded-3xl border border-white/10 bg-white/[0.05] p-6 sm:p-7">
               <p className="text-sm font-semibold text-white">
-                Find the right role
+                Before applying
               </p>
 
-              <p className="mt-2 text-sm leading-6 text-slate-400">
-                Search opportunities by team, location, working arrangement,
-                and experience level.
-              </p>
-            </div>
+              <ul className="mt-5 space-y-4">
+                {[
+                  "Review the role responsibilities",
+                  "Check location and working arrangements",
+                  "Compare the requirements with your experience",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-3 text-sm leading-6 text-slate-300"
+                  >
+                    <span
+                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400"
+                      aria-hidden="true"
+                    />
 
-            <div>
-              <p className="text-sm font-semibold text-white">
-                Apply clearly
-              </p>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
 
-              <p className="mt-2 text-sm leading-6 text-slate-400">
-                Review the full role details and apply without unnecessary
-                account creation or application friction.
-              </p>
+              <Link
+                href="/careers/jobs"
+                className="mt-7 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-violet-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-violet-500 focus:outline-none focus:ring-4 focus:ring-violet-400/20"
+              >
+                Explore Open Roles
+
+                <span className="ml-2" aria-hidden="true">
+                  →
+                </span>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,125 +1,77 @@
-import Link from "next/link";
-
 const topics = [
   {
     number: "01",
     title: "Software Engineering",
     description:
-      "Architecture, product engineering, APIs, modernization, platform design, quality, and the decisions involved in building software that can evolve.",
-    href: "/solutions/software-engineering",
-    accent: "text-cyan-700",
-    soft: "bg-cyan-50",
-    border: "border-cyan-100",
+      "Architecture, modernization, APIs, quality, developer experience, and sustainable software delivery.",
   },
   {
     number: "02",
     title: "AI & Data",
     description:
-      "Data foundations, machine learning, generative AI, evaluation, production systems, analytics, and responsible operational practices.",
-    href: "/solutions/ai-data",
-    accent: "text-violet-700",
-    soft: "bg-violet-50",
-    border: "border-violet-100",
+      "Data foundations, applied AI, machine learning, evaluation, integration, and production operations.",
   },
   {
     number: "03",
-    title: "Cloud & DevOps",
+    title: "Cloud & Platforms",
     description:
-      "Cloud architecture, platform engineering, infrastructure automation, CI/CD, reliability, observability, and modernization strategy.",
-    href: "/solutions/cloud-devops",
-    accent: "text-sky-700",
-    soft: "bg-sky-50",
-    border: "border-sky-100",
+      "Cloud modernization, platform engineering, DevOps, reliability, infrastructure, and operating models.",
   },
   {
     number: "04",
     title: "Cybersecurity",
     description:
-      "Application security, cloud security, identity, DevSecOps, threat modeling, secure architecture, and engineering guardrails.",
-    href: "/solutions/cybersecurity",
-    accent: "text-emerald-700",
-    soft: "bg-emerald-50",
-    border: "border-emerald-100",
-  },
-  {
-    number: "05",
-    title: "Architecture & Modernization",
-    description:
-      "How to evolve legacy systems, simplify complexity, make better architectural trade-offs, and modernize without unnecessary disruption.",
-    href: "/work/cloud-modernization-platform",
-    accent: "text-indigo-700",
-    soft: "bg-indigo-50",
-    border: "border-indigo-100",
-  },
-  {
-    number: "06",
-    title: "Engineering Leadership",
-    description:
-      "Delivery systems, developer experience, technical decision-making, team effectiveness, ownership, and building stronger engineering organizations.",
-    href: "/company",
-    accent: "text-slate-700",
-    soft: "bg-slate-100",
-    border: "border-slate-200",
+      "Application security, cloud security, identity, architecture, automation, and engineering guardrails.",
   },
 ];
 
 export default function InsightTopics() {
   return (
-    <section className="bg-white py-24 sm:py-28">
+    <section className="bg-slate-50 py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600">
-            Topics We Explore
-          </p>
+        <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:gap-16">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
+              Topics
+            </p>
 
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-            Practical perspectives across
-            <span className="block text-slate-500">
-              the technology lifecycle.
-            </span>
-          </h2>
+            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Explore technology
+              <span className="block text-slate-500">
+                through connected disciplines.
+              </span>
+            </h2>
+          </div>
 
-          <p className="mt-6 max-w-2xl text-base leading-7 text-slate-600">
-            The goal of our Insights content is to help technical and business
-            leaders think more clearly about architecture, engineering,
-            modernization, cloud, data, AI, security, and long-term ownership.
+          <p className="max-w-2xl text-base leading-7 text-slate-600 lg:justify-self-end">
+            The most useful technology perspectives often cross service
+            boundaries because architecture, cloud, software, data, security,
+            and delivery decisions influence one another.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {topics.map((topic) => (
-            <Link
+        <div className="mt-12 overflow-hidden rounded-3xl border border-slate-200 bg-white sm:mt-14 lg:mt-16">
+          {topics.map((topic, index) => (
+            <article
               key={topic.number}
-              href={topic.href}
-              className={`group rounded-3xl border ${topic.border} ${topic.soft} p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-950/5 sm:p-8`}
+              className={`grid min-w-0 gap-4 p-6 sm:p-7 lg:grid-cols-[72px_300px_1fr] lg:gap-8 lg:p-8 ${
+                index !== topics.length - 1
+                  ? "border-b border-slate-200"
+                  : ""
+              }`}
             >
-              <div className="flex items-start justify-between gap-6">
-                <span
-                  className={`text-sm font-semibold tracking-[0.18em] ${topic.accent}`}
-                >
-                  {topic.number}
-                </span>
+              <span className="text-xs font-semibold tracking-[0.18em] text-indigo-700">
+                {topic.number}
+              </span>
 
-                <span
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white bg-white text-slate-700 transition group-hover:bg-slate-950 group-hover:text-white"
-                  aria-hidden="true"
-                >
-                  →
-                </span>
-              </div>
-
-              <h3 className="mt-7 text-xl font-semibold tracking-tight text-slate-950">
+              <h3 className="text-lg font-semibold tracking-tight text-slate-950 sm:text-xl">
                 {topic.title}
               </h3>
 
-              <p className="mt-4 text-sm leading-6 text-slate-600">
+              <p className="text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
                 {topic.description}
               </p>
-
-              <p className={`mt-7 text-sm font-semibold ${topic.accent}`}>
-                Explore related work
-              </p>
-            </Link>
+            </article>
           ))}
         </div>
       </div>
