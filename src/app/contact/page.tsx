@@ -1,11 +1,17 @@
-import PageIntro from "@/components/shared/PageIntro";
+import ContactAlternatives from "@/components/contact/ContactAlternatives";
+import ContactAreas from "@/components/contact/ContactAreas";
+import ContactForm from "@/components/contact/ContactForm";
+import ContactHero from "@/components/contact/ContactHero";
+import ContactNextSteps from "@/components/contact/ContactNextSteps";
 
 export default function ContactPage() {
   return (
-    <PageIntro
-      eyebrow="Contact"
-      title="Let’s talk about what you’re building."
-      description="Tell us about your technology challenge, product idea, modernization initiative, or engineering need. A complete contact form will be added here."
-    />
+    <main>
+      <ContactHero />
+      <ContactAreas />
+      <ContactForm />
+      <ContactNextSteps />
+      <ContactAlternatives />
+    </main>
   );
 }
