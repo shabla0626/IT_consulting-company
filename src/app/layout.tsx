@@ -1,26 +1,64 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Header from "@/components/layout/Header";
+
 import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import { siteConfig } from "@/lib/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+
+  applicationName: siteConfig.name,
+
   title: {
-    default: "Nexora Consulting",
-    template: "%s | Nexora Consulting",
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    "Technology consulting, software engineering, cloud, AI, and digital transformation services.",
+
+  description: siteConfig.description,
+
+  authors: [
+    {
+      name: siteConfig.name,
+    },
+  ],
+
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: siteConfig.description,
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+  },
 };
 
 export default function RootLayout({
@@ -30,9 +68,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body>
+        {/* Keyboard users can bypass global navigation */}
+        <a
+          href="#main-content"
+          className="skip-link"
+        >
+          Skip to main content
+        </a>
+
         <Header />
-        {children}
+
+        {/*
+          Individual pages already contain their own <main>.
+          Therefore this remains a div rather than another <main>.
+        */}
+        <div
+          id="main-content"
+          tabIndex={-1}
+        >
+          {children}
+        </div>
+
         <Footer />
       </body>
     </html>

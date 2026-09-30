@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+} from "react";
 
 const navigation = [
   {
@@ -38,14 +43,28 @@ const navigation = [
 export default function Header() {
   const pathname = usePathname();
 
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] =
+    useState(false);
+
+  const mobileToggleRef =
+    useRef<HTMLButtonElement>(null);
 
   function toggleMobileMenu() {
-    setMobileOpen((current) => !current);
+    setMobileOpen(
+      (current) => !current,
+    );
   }
 
   function closeMobileMenu() {
     setMobileOpen(false);
+  }
+
+  function closeMobileMenuAndReturnFocus() {
+    setMobileOpen(false);
+
+    window.requestAnimationFrame(() => {
+      mobileToggleRef.current?.focus();
+    });
   }
 
   function isActive(href: string) {
@@ -55,12 +74,105 @@ export default function Header() {
 
     if (href === "/careers") {
       return (
-        pathname.startsWith("/careers") || pathname.startsWith("/application")
+        pathname === "/careers" ||
+        pathname.startsWith(
+          "/careers/",
+        ) ||
+        pathname === "/application" ||
+        pathname.startsWith(
+          "/application/",
+        )
       );
     }
 
-    return pathname.startsWith(href);
+    return (
+      pathname === href ||
+      pathname.startsWith(
+        `${href}/`,
+      )
+    );
   }
+
+  /*
+   * Escape closes an open mobile navigation
+   * and returns keyboard focus to the
+   * menu toggle.
+   *
+   * The state update happens inside the
+   * keyboard event callback rather than
+   * synchronously inside the effect.
+   */
+  useEffect(() => {
+    if (!mobileOpen) {
+      return;
+    }
+
+    function handleEscape(
+      event: globalThis.KeyboardEvent,
+    ) {
+      if (event.key !== "Escape") {
+        return;
+      }
+
+      event.preventDefault();
+
+      setMobileOpen(false);
+
+      window.requestAnimationFrame(
+        () => {
+          mobileToggleRef.current?.focus();
+        },
+      );
+    }
+
+    document.addEventListener(
+      "keydown",
+      handleEscape,
+    );
+
+    return () => {
+      document.removeEventListener(
+        "keydown",
+        handleEscape,
+      );
+    };
+  }, [mobileOpen]);
+
+  /*
+   * Native button Enter/Space behavior
+   * already works.
+   *
+   * This additionally handles Escape if
+   * focus remains on the menu button.
+   */
+  function handleToggleKeyDown(
+    event: KeyboardEvent<HTMLButtonElement>,
+  ) {
+    if (
+      event.key === "Escape" &&
+      mobileOpen
+    ) {
+      event.preventDefault();
+
+      closeMobileMenuAndReturnFocus();
+    }
+  }
+
+  const jobsActive =
+    pathname === "/careers/jobs" ||
+    pathname.startsWith(
+      "/careers/jobs/",
+    ) ||
+    pathname === "/application" ||
+    pathname.startsWith(
+      "/application/",
+    );
+
+  const contactActive =
+    pathname === "/contact" ||
+    pathname.startsWith(
+      "/contact/",
+    );
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur">
@@ -70,14 +182,16 @@ export default function Header() {
           <Link
             href="/"
             aria-label="Nexora home"
-            className="group flex items-center gap-3"
+            onClick={closeMobileMenu}
+            className="group flex min-h-11 items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-100"
           >
-            <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-slate-950 text-sm font-bold text-white shadow-sm">
+            <span
+              className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-slate-950 text-sm font-bold text-white shadow-sm"
+              aria-hidden="true"
+            >
               N
-              <span
-                className="absolute bottom-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-indigo-400"
-                aria-hidden="true"
-              />
+
+              <span className="absolute bottom-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-indigo-400" />
             </span>
 
             <span className="flex flex-col">
@@ -96,68 +210,121 @@ export default function Header() {
             aria-label="Primary navigation"
             className="hidden items-center gap-1 lg:flex"
           >
-            {navigation.map((item) => {
-              const active = isActive(item.href);
+            {navigation.map(
+              (item) => {
+                const active =
+                  isActive(
+                    item.href,
+                  );
 
-              const isCareers = item.href === "/careers";
+                const isCareers =
+                  item.href ===
+                  "/careers";
 
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  aria-current={active ? "page" : undefined}
-                  className={`relative rounded-lg px-3 py-2 text-sm font-medium transition ${
-                    active
-                      ? "text-slate-950"
-                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-950"
-                  } ${isCareers && !active ? "text-violet-700" : ""}`}
-                >
-                  {item.label}
+                return (
+                  <Link
+                    key={
+                      item.href
+                    }
+                    href={
+                      item.href
+                    }
+                    aria-current={
+                      active
+                        ? "page"
+                        : undefined
+                    }
+                    className={`relative inline-flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-100 ${
+                      active
+                        ? "text-slate-950"
+                        : "text-slate-600 hover:bg-slate-50 hover:text-slate-950"
+                    } ${
+                      isCareers &&
+                      !active
+                        ? "text-violet-700"
+                        : ""
+                    }`}
+                  >
+                    {
+                      item.label
+                    }
 
-                  {active && (
-                    <span
-                      className={`absolute inset-x-3 -bottom-[17px] h-0.5 rounded-full ${
-                        isCareers ? "bg-violet-600" : "bg-indigo-600"
-                      }`}
-                      aria-hidden="true"
-                    />
-                  )}
-                </Link>
-              );
-            })}
+                    {active && (
+                      <span
+                        className={`absolute inset-x-3 -bottom-[15px] h-0.5 rounded-full ${
+                          isCareers
+                            ? "bg-violet-600"
+                            : "bg-indigo-600"
+                        }`}
+                        aria-hidden="true"
+                      />
+                    )}
+                  </Link>
+                );
+              },
+            )}
           </nav>
 
           {/* Desktop actions */}
           <div className="hidden items-center gap-3 lg:flex">
             <Link
               href="/careers/jobs"
-              className="rounded-full px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-slate-950"
+              aria-current={
+                jobsActive
+                  ? "page"
+                  : undefined
+              }
+              className={`inline-flex min-h-11 items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-violet-100 ${
+                jobsActive
+                  ? "bg-violet-50 text-violet-800"
+                  : "text-slate-600 hover:bg-slate-50 hover:text-slate-950"
+              }`}
             >
               Open Roles
             </Link>
 
             <Link
               href="/contact"
-              onClick={closeMobileMenu}
-              className="inline-flex items-center justify-center rounded-full bg-indigo-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-100"
+              aria-current={
+                contactActive
+                  ? "page"
+                  : undefined
+              }
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-indigo-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-200"
             >
               Talk to an Expert
-              <span className="ml-2" aria-hidden="true">
+
+              <span
+                className="ml-2"
+                aria-hidden="true"
+              >
                 →
               </span>
             </Link>
           </div>
 
-          {/* Mobile toggle */}
+          {/* Mobile navigation toggle */}
           <button
+            ref={
+              mobileToggleRef
+            }
             type="button"
             aria-label={
-              mobileOpen ? "Close navigation menu" : "Open navigation menu"
+              mobileOpen
+                ? "Close navigation menu"
+                : "Open navigation menu"
             }
-            aria-expanded={mobileOpen}
+            aria-expanded={
+              mobileOpen
+            }
             aria-controls="mobile-navigation"
-            onClick={toggleMobileMenu}
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-800 transition hover:bg-slate-50 lg:hidden"
+            onClick={
+              toggleMobileMenu
+            }
+            onKeyDown={
+              handleToggleKeyDown
+            }
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-800 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-100 lg:hidden"
           >
             {mobileOpen ? (
               <svg
@@ -200,84 +367,148 @@ export default function Header() {
           className="border-t border-slate-200 bg-white lg:hidden"
         >
           <div className="mx-auto max-w-7xl px-6 py-6">
-            <nav aria-label="Mobile navigation" className="space-y-1">
-              {navigation.map((item) => {
-                const active = isActive(item.href);
+            <nav
+              aria-label="Mobile navigation"
+              className="space-y-1"
+            >
+              {navigation.map(
+                (item) => {
+                  const active =
+                    isActive(
+                      item.href,
+                    );
 
-                const isCareers = item.href === "/careers";
+                  const isCareers =
+                    item.href ===
+                    "/careers";
 
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    aria-current={active ? "page" : undefined}
-                    className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-sm font-semibold transition ${
-                      active
-                        ? isCareers
-                          ? "bg-violet-50 text-violet-800"
-                          : "bg-indigo-50 text-indigo-800"
-                        : isCareers
-                          ? "text-violet-700 hover:bg-violet-50"
-                          : "text-slate-700 hover:bg-slate-50 hover:text-slate-950"
-                    }`}
-                  >
-                    <span>{item.label}</span>
+                  return (
+                    <Link
+                      key={
+                        item.href
+                      }
+                      href={
+                        item.href
+                      }
+                      aria-current={
+                        active
+                          ? "page"
+                          : undefined
+                      }
+                      onClick={
+                        closeMobileMenu
+                      }
+                      className={`flex min-h-12 items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-100 ${
+                        active
+                          ? isCareers
+                            ? "bg-violet-50 text-violet-800"
+                            : "bg-indigo-50 text-indigo-800"
+                          : isCareers
+                            ? "text-violet-700 hover:bg-violet-50"
+                            : "text-slate-700 hover:bg-slate-50 hover:text-slate-950"
+                      }`}
+                    >
+                      <span>
+                        {
+                          item.label
+                        }
+                      </span>
 
-                    {active && (
-                      <span
-                        className={`h-1.5 w-1.5 rounded-full ${
-                          isCareers ? "bg-violet-600" : "bg-indigo-600"
-                        }`}
-                        aria-hidden="true"
-                      />
-                    )}
-                  </Link>
-                );
-              })}
+                      {active && (
+                        <span
+                          className={`h-1.5 w-1.5 shrink-0 rounded-full ${
+                            isCareers
+                              ? "bg-violet-600"
+                              : "bg-indigo-600"
+                          }`}
+                          aria-hidden="true"
+                        />
+                      )}
+                    </Link>
+                  );
+                },
+              )}
             </nav>
 
+            {/* Mobile actions */}
             <div className="mt-6 grid gap-3 border-t border-slate-200 pt-6 sm:grid-cols-2">
               <Link
                 href="/careers/jobs"
-                onClick={toggleMobileMenu}
-                className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-800 transition hover:bg-slate-50"
+                aria-current={
+                  jobsActive
+                    ? "page"
+                    : undefined
+                }
+                onClick={
+                  closeMobileMenu
+                }
+                className={`inline-flex min-h-12 items-center justify-center rounded-full border px-5 py-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-violet-100 ${
+                  jobsActive
+                    ? "border-violet-200 bg-violet-50 text-violet-800"
+                    : "border-slate-300 bg-white text-slate-800 hover:bg-slate-50"
+                }`}
               >
                 View Open Roles
               </Link>
 
               <Link
                 href="/contact"
-                onClick={closeMobileMenu}
-                className="inline-flex items-center justify-center rounded-full bg-indigo-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800"
+                aria-current={
+                  contactActive
+                    ? "page"
+                    : undefined
+                }
+                onClick={
+                  closeMobileMenu
+                }
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-indigo-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-200"
               >
                 Talk to an Expert
-                <span className="ml-2" aria-hidden="true">
+
+                <span
+                  className="ml-2"
+                  aria-hidden="true"
+                >
                   →
                 </span>
               </Link>
             </div>
 
+            {/* Journey guidance */}
             <div className="mt-6 rounded-2xl bg-slate-950 p-5 text-white">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
-                Two ways to work with us
+                Two ways to work
+                with us
               </p>
 
               <div className="mt-4 grid gap-4 sm:grid-cols-2">
                 <div>
                   <p className="text-sm font-semibold">
-                    Solve a technology challenge
+                    Solve a
+                    technology
+                    challenge
                   </p>
 
                   <p className="mt-1.5 text-xs leading-5 text-slate-400">
-                    Explore solutions, work, and consulting expertise.
+                    Explore
+                    solutions,
+                    work, and
+                    consulting
+                    expertise.
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold">Build your career</p>
+                  <p className="text-sm font-semibold">
+                    Build your
+                    career
+                  </p>
 
                   <p className="mt-1.5 text-xs leading-5 text-slate-400">
-                    Explore teams, culture, and open opportunities.
+                    Explore teams,
+                    culture, and
+                    open
+                    opportunities.
                   </p>
                 </div>
               </div>

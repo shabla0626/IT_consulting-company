@@ -1,9 +1,37 @@
 import type { Metadata } from "next";
 import SolutionDetail from "@/components/solutions/detail/SolutionDetail";
 
+import { siteConfig } from "@/lib/site";
+
+
+const pageTitle =
+  "Cloud & DevOps";
+
+const pageDescription =
+  "Cloud architecture, platform engineering, DevOps automation, infrastructure, observability, and reliability consulting.";
+
 export const metadata: Metadata = {
-  title: "Cloud & DevOps",
-  description: "Cloud architecture, platform engineering, DevOps automation, infrastructure, observability, and reliability consulting.",
+  title: pageTitle,
+
+  description: pageDescription,
+
+  alternates: {
+    canonical: "/solutions/cloud-devops",
+  },
+
+  openGraph: {
+    type: "website",
+    url: "/solutions/cloud-devops",
+    siteName: siteConfig.name,
+    title: pageTitle,
+    description: pageDescription,
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: pageTitle,
+    description: pageDescription,
+  },
 };
 
 export default function CloudDevOpsPage() {

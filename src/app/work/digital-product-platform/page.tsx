@@ -1,4 +1,48 @@
+import type { Metadata } from "next";
+
 import CaseStudyDetail from "@/components/work/detail/CaseStudyDetail";
+import { siteConfig } from "@/lib/site";
+
+const pageTitle =
+  "Digital Product Platform Engineering";
+
+const pageDescription =
+  "A representative technology consulting engagement exploring digital product engineering, software architecture, APIs, cloud foundations, quality engineering, observability, and platform delivery.";
+
+export const metadata: Metadata = {
+  title: pageTitle,
+
+  description: pageDescription,
+
+  alternates: {
+    canonical:
+      "/work/digital-product-platform",
+  },
+
+  robots: {
+    index: false,
+    follow: true,
+
+    googleBot: {
+      index: false,
+      follow: true,
+    },
+  },
+
+  openGraph: {
+    type: "website",
+    url: "/work/digital-product-platform",
+    siteName: siteConfig.name,
+    title: pageTitle,
+    description: pageDescription,
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: pageTitle,
+    description: pageDescription,
+  },
+};
 
 export default function DigitalProductPlatformPage() {
   return (

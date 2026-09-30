@@ -1,4 +1,48 @@
+import type { Metadata } from "next";
+
 import InsightArticle from "@/components/insights/detail/InsightArticle";
+import { siteConfig } from "@/lib/site";
+
+const pageTitle =
+  "Designing AI Systems for Production";
+
+const pageDescription =
+  "A practical perspective on building production AI systems across use-case design, data quality, evaluation, architecture, observability, security, cost, and operational ownership.";
+
+export const metadata: Metadata = {
+  title: pageTitle,
+
+  description: pageDescription,
+
+  alternates: {
+    canonical:
+      "/insights/ai-production-systems",
+  },
+
+  robots: {
+    index: false,
+    follow: true,
+
+    googleBot: {
+      index: false,
+      follow: true,
+    },
+  },
+
+  openGraph: {
+    type: "article",
+    url: "/insights/ai-production-systems",
+    siteName: siteConfig.name,
+    title: pageTitle,
+    description: pageDescription,
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: pageTitle,
+    description: pageDescription,
+  },
+};
 
 export default function AIProductionSystemsPage() {
   return (

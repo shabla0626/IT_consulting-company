@@ -1,9 +1,28 @@
+import type { Metadata } from "next";
+
 import ApplicationForm from "@/components/careers/application/ApplicationForm";
 import ApplicationShell from "@/components/careers/application/ApplicationShell";
 import InvalidApplicationState from "@/components/careers/application/InvalidApplicationState";
 
 import { jobs } from "@/data/jobs";
 import type { Job } from "@/data/jobs";
+
+export const metadata: Metadata = {
+  title: "Apply for a Role",
+
+  description:
+    "Submit your application for an open role at Nexora Consulting.",
+
+  robots: {
+    index: false,
+    follow: false,
+
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+};
 
 type ApplicationPageProps = {
   searchParams: Promise<{
@@ -39,7 +58,10 @@ function getString(
 }
 
 function getJobSlug(job: Job) {
-  return getString(job, ["slug", "id"]);
+  return getString(job, [
+    "slug",
+    "id",
+  ]);
 }
 
 function isOpenJob(job: Job) {
@@ -110,7 +132,11 @@ export default async function ApplicationPage({
 
   const jobTitle = getString(
     job,
-    ["title", "name", "role"],
+    [
+      "title",
+      "name",
+      "role",
+    ],
     "Selected role",
   );
 
@@ -157,32 +183,7 @@ export default async function ApplicationPage({
       locationType={locationType}
       employmentType={employmentType}
     >
-      {/*
-        IMPORTANT:
-
-        Replace ONLY the next line with the
-        ApplicationForm invocation that was already
-        working in your project.
-
-        For example, if yours was:
-
-        <ApplicationForm job={job} />
-
-        keep that.
-
-        If yours was:
-
-        <ApplicationForm
-          jobSlug={requestedJob}
-          jobTitle={jobTitle}
-        />
-
-        keep that instead.
-
-        Do not modify the form/server contract yet.
-      */}
-
-      <ApplicationForm job = {job} />
+      <ApplicationForm job={job} />
     </ApplicationShell>
   );
 }

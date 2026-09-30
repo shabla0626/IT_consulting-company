@@ -1,4 +1,47 @@
+import type { Metadata } from "next";
+
 import CaseStudyDetail from "@/components/work/detail/CaseStudyDetail";
+import { siteConfig } from "@/lib/site";
+
+const pageTitle =
+  "Data & AI Platform Engineering";
+
+const pageDescription =
+  "A representative technology consulting engagement exploring data engineering, analytics, machine learning, generative AI, evaluation, observability, cloud foundations, and production AI operations.";
+
+export const metadata: Metadata = {
+  title: pageTitle,
+
+  description: pageDescription,
+
+  alternates: {
+    canonical: "/work/data-ai-platform",
+  },
+
+  robots: {
+    index: false,
+    follow: true,
+
+    googleBot: {
+      index: false,
+      follow: true,
+    },
+  },
+
+  openGraph: {
+    type: "website",
+    url: "/work/data-ai-platform",
+    siteName: siteConfig.name,
+    title: pageTitle,
+    description: pageDescription,
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: pageTitle,
+    description: pageDescription,
+  },
+};
 
 export default function DataAIPlatformPage() {
   return (

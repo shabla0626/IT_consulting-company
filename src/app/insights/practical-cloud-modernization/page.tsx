@@ -1,4 +1,48 @@
+import type { Metadata } from "next";
+
 import InsightArticle from "@/components/insights/detail/InsightArticle";
+import { siteConfig } from "@/lib/site";
+
+const pageTitle =
+  "Practical Cloud Modernization";
+
+const pageDescription =
+  "A practical perspective on modernizing applications, cloud infrastructure, delivery practices, reliability, and platform foundations without introducing unnecessary complexity.";
+
+export const metadata: Metadata = {
+  title: pageTitle,
+
+  description: pageDescription,
+
+  alternates: {
+    canonical:
+      "/insights/practical-cloud-modernization",
+  },
+
+  robots: {
+    index: false,
+    follow: true,
+
+    googleBot: {
+      index: false,
+      follow: true,
+    },
+  },
+
+  openGraph: {
+    type: "article",
+    url: "/insights/practical-cloud-modernization",
+    siteName: siteConfig.name,
+    title: pageTitle,
+    description: pageDescription,
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: pageTitle,
+    description: pageDescription,
+  },
+};
 
 export default function PracticalCloudModernizationPage() {
   return (

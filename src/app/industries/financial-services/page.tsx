@@ -1,4 +1,37 @@
+import type { Metadata } from "next";
+
 import IndustryDetail from "@/components/industries/detail/IndustryDetail";
+import { siteConfig } from "@/lib/site";
+
+const pageTitle =
+  "Financial Services Technology Consulting";
+
+const pageDescription =
+  "Technology consulting for financial services organizations across application modernization, cloud and platform engineering, data, AI, cybersecurity, and digital product development.";
+
+export const metadata: Metadata = {
+  title: pageTitle,
+
+  description: pageDescription,
+
+  alternates: {
+    canonical: "/industries/financial-services",
+  },
+
+  openGraph: {
+    type: "website",
+    url: "/industries/financial-services",
+    siteName: siteConfig.name,
+    title: pageTitle,
+    description: pageDescription,
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: pageTitle,
+    description: pageDescription,
+  },
+};
 
 export default function FinancialServicesPage() {
   return (

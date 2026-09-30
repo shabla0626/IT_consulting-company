@@ -5,9 +5,38 @@ import SoftwareHero from "@/components/solutions/software/SoftwareHero";
 import SoftwareCapabilities from "@/components/solutions/software/SoftwareCapabilities";
 import EngineeringApproach from "@/components/solutions/software/EngineeringApproach";
 
+
+import { siteConfig } from "@/lib/site";
+
+
+const pageTitle =
+  "Software Engineering";
+
+const pageDescription =
+  "Software engineering services for digital products, platforms, APIs, modernization, and engineering enablement.";
+
 export const metadata: Metadata = {
-  title: "Software Engineering",
-  description: "Software engineering services for digital products, platforms, APIs, modernization, and engineering enablement.",
+  title: pageTitle,
+
+  description: pageDescription,
+
+  alternates: {
+    canonical: "/solutions/software-engineering",
+  },
+
+  openGraph: {
+    type: "website",
+    url: "/solutions/software-engineering",
+    siteName: siteConfig.name,
+    title: pageTitle,
+    description: pageDescription,
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: pageTitle,
+    description: pageDescription,
+  },
 };
 
 const technologyAreas = [

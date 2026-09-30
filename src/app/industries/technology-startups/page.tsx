@@ -1,4 +1,37 @@
+import type { Metadata } from "next";
+
 import IndustryDetail from "@/components/industries/detail/IndustryDetail";
+import { siteConfig } from "@/lib/site";
+
+const pageTitle =
+  "Technology & Startups Consulting";
+
+const pageDescription =
+  "Technology consulting for startups and technology companies across product engineering, architecture modernization, cloud platforms, data and AI, engineering enablement, and security.";
+
+export const metadata: Metadata = {
+  title: pageTitle,
+
+  description: pageDescription,
+
+  alternates: {
+    canonical: "/industries/technology-startups",
+  },
+
+  openGraph: {
+    type: "website",
+    url: "/industries/technology-startups",
+    siteName: siteConfig.name,
+    title: pageTitle,
+    description: pageDescription,
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: pageTitle,
+    description: pageDescription,
+  },
+};
 
 export default function TechnologyStartupsPage() {
   return (

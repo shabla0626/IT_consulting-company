@@ -54,10 +54,17 @@ export default function ContactForm() {
 
     setValidated(true);
 
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
     document
       .getElementById("contact-form")
       ?.scrollIntoView({
-        behavior: "smooth",
+        behavior: prefersReducedMotion
+          ? "auto"
+          : "smooth",
         block: "start",
       });
   }
@@ -65,6 +72,7 @@ export default function ContactForm() {
   return (
     <section
       id="contact-form"
+      aria-labelledby="contact-form-heading"
       className="scroll-mt-24 bg-slate-50 py-20 sm:py-24 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -75,7 +83,10 @@ export default function ContactForm() {
               Start a Conversation
             </p>
 
-            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+            <h2
+              id="contact-form-heading"
+              className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl"
+            >
               Give us enough context
               <span className="block text-slate-500">
                 to understand the problem.
@@ -136,6 +147,7 @@ export default function ContactForm() {
             {validated && (
               <div
                 role="status"
+                aria-live="polite"
                 className="mb-7 rounded-2xl border border-indigo-200 bg-indigo-50 p-5 sm:mb-8"
               >
                 <p className="font-semibold text-slate-950">
@@ -150,7 +162,7 @@ export default function ContactForm() {
             )}
 
             <form onSubmit={handleSubmit}>
-              {/* Contact details */}
+              {/* Your details */}
               <FormGroup
                 number="01"
                 title="Your details"
@@ -253,7 +265,6 @@ export default function ContactForm() {
                     className="block text-sm font-semibold text-slate-900"
                   >
                     Tell us about your project or challenge
-
                     <RequiredMark />
                   </label>
 
@@ -264,10 +275,14 @@ export default function ContactForm() {
                     required
                     maxLength={5000}
                     placeholder="What are you trying to achieve? What exists today? Where are the main challenges or constraints?"
-                    className="mt-3 min-h-52 w-full resize-y rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-base leading-7 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
+                    aria-describedby="message-help"
+                    className="mt-3 min-h-52 w-full resize-y rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-base leading-7 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 focus-visible:border-indigo-500 focus-visible:ring-4 focus-visible:ring-indigo-100"
                   />
 
-                  <p className="mt-2 text-xs leading-5 text-slate-500">
+                  <p
+                    id="message-help"
+                    className="mt-2 text-xs leading-5 text-slate-500"
+                  >
                     You do not need to include confidential or sensitive
                     information at this stage.
                   </p>
@@ -288,7 +303,7 @@ export default function ContactForm() {
                       type="checkbox"
                       name="contactConsent"
                       required
-                      className="mt-0.5 h-5 w-5 shrink-0 rounded border-slate-300 text-indigo-700 focus:ring-indigo-500"
+                      className="mt-0.5 h-5 w-5 shrink-0 rounded border-slate-300 text-indigo-700 focus:ring-indigo-500 focus-visible:ring-4 focus-visible:ring-indigo-200"
                     />
 
                     <span className="min-w-0 text-sm leading-6 text-slate-600">
@@ -317,7 +332,7 @@ export default function ContactForm() {
 
                   <button
                     type="submit"
-                    className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-white/20 sm:w-auto"
+                    className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:w-auto"
                   >
                     Validate Inquiry
 
@@ -355,7 +370,10 @@ function FormGroup({
     <section>
       <div className="mb-6">
         <div className="grid grid-cols-[34px_minmax(0,1fr)] gap-3 sm:gap-4">
-          <span className="pt-1 text-xs font-semibold tracking-[0.16em] text-indigo-700">
+          <span
+            className="pt-1 text-xs font-semibold tracking-[0.16em] text-indigo-700"
+            aria-hidden="true"
+          >
             {number}
           </span>
 
@@ -442,7 +460,7 @@ function TextField({
         placeholder={placeholder}
         autoComplete={autoComplete}
         required={required}
-        className="mt-3 min-h-12 w-full min-w-0 rounded-2xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
+        className="mt-3 min-h-12 w-full min-w-0 rounded-2xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 focus-visible:border-indigo-500 focus-visible:ring-4 focus-visible:ring-indigo-100"
       />
     </div>
   );
@@ -481,7 +499,7 @@ function SelectField({
         name={name}
         required={required}
         defaultValue=""
-        className="mt-3 min-h-12 w-full min-w-0 rounded-2xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-800 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
+        className="mt-3 min-h-12 w-full min-w-0 rounded-2xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-800 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 focus-visible:border-indigo-500 focus-visible:ring-4 focus-visible:ring-indigo-100"
       >
         <option
           value=""

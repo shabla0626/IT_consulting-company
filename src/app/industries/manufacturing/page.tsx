@@ -1,4 +1,37 @@
+import type { Metadata } from "next";
+
 import IndustryDetail from "@/components/industries/detail/IndustryDetail";
+import { siteConfig } from "@/lib/site";
+
+const pageTitle =
+  "Manufacturing Technology Consulting";
+
+const pageDescription =
+  "Technology consulting for manufacturing organizations across application modernization, systems integration, cloud and platform engineering, data, AI enablement, and security engineering.";
+
+export const metadata: Metadata = {
+  title: pageTitle,
+
+  description: pageDescription,
+
+  alternates: {
+    canonical: "/industries/manufacturing",
+  },
+
+  openGraph: {
+    type: "website",
+    url: "/industries/manufacturing",
+    siteName: siteConfig.name,
+    title: pageTitle,
+    description: pageDescription,
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: pageTitle,
+    description: pageDescription,
+  },
+};
 
 export default function ManufacturingPage() {
   return (

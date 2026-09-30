@@ -1,10 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { siteConfig } from "@/lib/site";
+
 export const metadata: Metadata = {
-  title: "Application Received | Careers at Nexora",
+  title: "Application Complete",
+
   description:
-    "Your application has been received. Explore more opportunities or learn more about careers at Nexora.",
+    `Application completion page for the ${siteConfig.name} careers experience.`,
+
+  robots: {
+    index: false,
+    follow: false,
+
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
 };
 
 export default function ApplicationSuccessPage() {
@@ -61,7 +74,11 @@ export default function ApplicationSuccessPage() {
                 className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
               >
                 Explore More Roles
-                <span className="ml-2" aria-hidden="true">
+
+                <span
+                  className="ml-2"
+                  aria-hidden="true"
+                >
                   →
                 </span>
               </Link>

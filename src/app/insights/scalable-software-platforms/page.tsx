@@ -1,5 +1,47 @@
-import InsightArticle from "@/components/insights/detail/InsightArticle";
+import type { Metadata } from "next";
 
+import InsightArticle from "@/components/insights/detail/InsightArticle";
+import { siteConfig } from "@/lib/site";
+
+const pageTitle =
+  "Building Scalable Software Platforms";
+
+const pageDescription =
+  "A practical perspective on software architecture, APIs, platform engineering, developer experience, quality, observability, and the decisions that help software evolve as organizations grow.";
+
+export const metadata: Metadata = {
+  title: pageTitle,
+
+  description: pageDescription,
+
+  alternates: {
+    canonical: "/insights/scalable-software-platforms",
+  },
+
+  robots: {
+    index: false,
+    follow: true,
+
+    googleBot: {
+      index: false,
+      follow: true,
+    },
+  },
+
+  openGraph: {
+    type: "article",
+    url: "/insights/scalable-software-platforms",
+    siteName: siteConfig.name,
+    title: pageTitle,
+    description: pageDescription,
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: pageTitle,
+    description: pageDescription,
+  },
+};
 export default function ScalableSoftwarePlatformsPage() {
   return (
     <InsightArticle
