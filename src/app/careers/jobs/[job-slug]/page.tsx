@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import JobDetail from "@/components/careers/jobs/JobDetail";
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 
 import { jobs } from "@/data/jobs";
 import { siteConfig } from "@/lib/site";
@@ -150,5 +151,17 @@ export default async function JobPage({
     notFound();
   }
 
-  return <JobDetail job={job} />;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Careers", href: "/careers" },
+          { name: "Open Roles", href: "/careers/jobs" },
+          { name: job.title, href: `/careers/jobs/${job.slug}` },
+        ]}
+      />
+      <JobDetail job={job} />
+    </>
+  );
 }

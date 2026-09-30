@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import JsonLd from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site";
 
 import "./globals.css";
@@ -69,6 +70,29 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": `${siteConfig.url}/#organization`,
+                name: siteConfig.name,
+                url: siteConfig.url,
+              },
+              {
+                "@type": "WebSite",
+                "@id": `${siteConfig.url}/#website`,
+                name: siteConfig.name,
+                url: siteConfig.url,
+                publisher: {
+                  "@id": `${siteConfig.url}/#organization`,
+                },
+              },
+            ],
+          }}
+        />
+
         {/* Keyboard users can bypass global navigation */}
         <a
           href="#main-content"

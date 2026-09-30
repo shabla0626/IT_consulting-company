@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 import IndustryDetail from "@/components/industries/detail/IndustryDetail";
 import { siteConfig } from "@/lib/site";
 
@@ -35,7 +36,15 @@ export const metadata: Metadata = {
 
 export default function FinancialServicesPage() {
   return (
-    <IndustryDetail
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Industries", href: "/industries" },
+          { name: "Financial Services", href: "/industries/financial-services" },
+        ]}
+      />
+      <IndustryDetail
       eyebrow="Financial Services"
       title="Modern technology for"
       highlightedTitle="complex financial environments."
@@ -122,6 +131,7 @@ export default function FinancialServicesPage() {
       ctaEyebrow="Financial Services"
       ctaTitle="Modernize without losing sight of reliability."
       ctaDescription="If you are improving an existing platform, building a new digital product, modernizing data infrastructure, or strengthening engineering capabilities, we can start with the problem and design the right technical path forward."
-    />
+      />
+    </>
   );
 }

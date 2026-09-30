@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 import CaseStudyDetail from "@/components/work/detail/CaseStudyDetail";
 import { siteConfig } from "@/lib/site";
 
@@ -46,7 +47,15 @@ export const metadata: Metadata = {
 
 export default function DigitalProductPlatformPage() {
   return (
-    <CaseStudyDetail
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Work", href: "/work" },
+          { name: "Digital Product Platform Engineering", href: "/work/digital-product-platform" },
+        ]}
+      />
+      <CaseStudyDetail
       eyebrow="Representative Engagement · Digital Product"
       title="Building a digital product around"
       highlightedTitle="evolving business and user needs."
@@ -311,6 +320,7 @@ export default function DigitalProductPlatformPage() {
       ctaEyebrow="Digital Product Engineering"
       ctaTitle="Build the product and the engineering foundation behind it."
       ctaDescription="If your digital product is becoming harder to evolve, integrations are increasing, architecture is creating friction, or engineering delivery needs stronger foundations, we can help assess the current system and define a practical path forward."
-    />
+      />
+    </>
   );
 }

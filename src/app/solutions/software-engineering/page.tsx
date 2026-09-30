@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 import SoftwareHero from "@/components/solutions/software/SoftwareHero";
 import SoftwareCapabilities from "@/components/solutions/software/SoftwareCapabilities";
 import EngineeringApproach from "@/components/solutions/software/EngineeringApproach";
@@ -53,6 +54,13 @@ const technologyAreas = [
 export default function SoftwareEngineeringPage() {
   return (
     <main>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Solutions", href: "/solutions" },
+          { name: "Software Engineering", href: "/solutions/software-engineering" },
+        ]}
+      />
       <SoftwareHero />
       <SoftwareCapabilities />
       <EngineeringApproach />

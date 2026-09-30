@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 import InsightArticle from "@/components/insights/detail/InsightArticle";
 import { siteConfig } from "@/lib/site";
 
@@ -46,7 +47,15 @@ export const metadata: Metadata = {
 
 export default function PracticalCloudModernizationPage() {
   return (
-    <InsightArticle
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Insights", href: "/insights" },
+          { name: "Practical Cloud Modernization", href: "/insights/practical-cloud-modernization" },
+        ]}
+      />
+      <InsightArticle
       eyebrow="Cloud & DevOps Perspective"
       title="Practical cloud modernization"
       highlightedTitle="without unnecessary complexity."
@@ -344,6 +353,7 @@ export default function PracticalCloudModernizationPage() {
       ctaEyebrow="Cloud Modernization"
       ctaTitle="Modernizing a platform without wanting to rebuild everything?"
       ctaDescription="We can help assess applications, cloud foundations, delivery practices, reliability, and operating constraints to identify where modernization creates real value and where existing systems can remain."
-    />
+      />
+    </>
   );
 }

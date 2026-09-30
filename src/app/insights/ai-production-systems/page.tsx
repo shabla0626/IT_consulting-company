@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 import InsightArticle from "@/components/insights/detail/InsightArticle";
 import { siteConfig } from "@/lib/site";
 
@@ -46,7 +47,15 @@ export const metadata: Metadata = {
 
 export default function AIProductionSystemsPage() {
   return (
-    <InsightArticle
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Insights", href: "/insights" },
+          { name: "Designing AI Systems for Production", href: "/insights/ai-production-systems" },
+        ]}
+      />
+      <InsightArticle
       eyebrow="AI & Data Perspective"
       title="Designing AI systems for"
       highlightedTitle="production, not just prototypes."
@@ -317,6 +326,7 @@ export default function AIProductionSystemsPage() {
       ctaEyebrow="AI & Data"
       ctaTitle="Moving an AI use case beyond the prototype?"
       ctaDescription="We can help evaluate the use case, data foundations, architecture, evaluation strategy, security, and operational capabilities needed to turn experimentation into a dependable production system."
-    />
+      />
+    </>
   );
 }

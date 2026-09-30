@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 import InsightArticle from "@/components/insights/detail/InsightArticle";
 import { siteConfig } from "@/lib/site";
 
@@ -44,7 +45,15 @@ export const metadata: Metadata = {
 };
 export default function ScalableSoftwarePlatformsPage() {
   return (
-    <InsightArticle
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Insights", href: "/insights" },
+          { name: "Building Scalable Software Platforms", href: "/insights/scalable-software-platforms" },
+        ]}
+      />
+      <InsightArticle
       eyebrow="Software Engineering Perspective"
       title="Building software platforms that"
       highlightedTitle="can evolve with the business."
@@ -374,6 +383,7 @@ export default function ScalableSoftwarePlatformsPage() {
       ctaEyebrow="Software Engineering"
       ctaTitle="Is your software getting harder to change as the business grows?"
       ctaDescription="We can help assess architecture, application boundaries, APIs, platform capabilities, engineering workflows, quality, and developer experience to identify where stronger software foundations can support continued product evolution."
-    />
+      />
+    </>
   );
 }

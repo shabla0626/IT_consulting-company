@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 import CaseStudyDetail from "@/components/work/detail/CaseStudyDetail";
 import { siteConfig } from "@/lib/site";
 
@@ -45,7 +46,15 @@ export const metadata: Metadata = {
 
 export default function DataAIPlatformPage() {
   return (
-    <CaseStudyDetail
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Work", href: "/work" },
+          { name: "Data & AI Platform Engineering", href: "/work/data-ai-platform" },
+        ]}
+      />
+      <CaseStudyDetail
       eyebrow="Representative Engagement · AI & Data"
       title="Building a data foundation for"
       highlightedTitle="practical, production-ready AI."
@@ -310,6 +319,7 @@ export default function DataAIPlatformPage() {
       ctaEyebrow="AI & Data"
       ctaTitle="Start with the problem AI or data needs to solve."
       ctaDescription="If your organization has fragmented data, disconnected analytics, promising AI experiments, or uncertainty about how to move an AI use case into production, we can help assess the foundations and define a practical path forward."
-    />
+      />
+    </>
   );
 }

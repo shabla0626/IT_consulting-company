@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 import IndustryDetail from "@/components/industries/detail/IndustryDetail";
 import { siteConfig } from "@/lib/site";
 
@@ -35,7 +36,15 @@ export const metadata: Metadata = {
 
 export default function HealthcarePage() {
   return (
-    <IndustryDetail
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Industries", href: "/industries" },
+          { name: "Healthcare", href: "/industries/healthcare" },
+        ]}
+      />
+      <IndustryDetail
       eyebrow="Healthcare"
       title="Technology built around"
       highlightedTitle="connected healthcare experiences."
@@ -122,6 +131,7 @@ export default function HealthcarePage() {
       ctaEyebrow="Healthcare"
       ctaTitle="Build healthcare technology that can evolve with the work."
       ctaDescription="Whether you are modernizing an existing platform, improving data foundations, building a new digital experience, or strengthening engineering capabilities, we can help define and deliver the right technical approach."
-    />
+      />
+    </>
   );
 }

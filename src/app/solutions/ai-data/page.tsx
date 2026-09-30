@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 import SolutionDetail from "@/components/solutions/detail/SolutionDetail";
 import { siteConfig } from "@/lib/site";
 
@@ -35,7 +36,15 @@ export const metadata: Metadata = {
 
 export default function AIDataPage() {
   return (
-    <SolutionDetail
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Solutions", href: "/solutions" },
+          { name: "AI & Data", href: "/solutions/ai-data" },
+        ]}
+      />
+      <SolutionDetail
       eyebrow="AI & Data"
       title="Turn information into"
       highlightedTitle="useful intelligence."
@@ -118,6 +127,7 @@ export default function AIDataPage() {
       ctaEyebrow="Build With AI"
       ctaTitle="Have an AI or data opportunity worth exploring?"
       ctaDescription="Tell us where AI, data, or automation could improve your product or operation, and we can help shape the technical path."
-    />
+      />
+    </>
   );
 }

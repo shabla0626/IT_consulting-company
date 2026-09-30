@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 import IndustryDetail from "@/components/industries/detail/IndustryDetail";
 import { siteConfig } from "@/lib/site";
 
@@ -35,7 +36,15 @@ export const metadata: Metadata = {
 
 export default function TechnologyStartupsPage() {
   return (
-    <IndustryDetail
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Industries", href: "/industries" },
+          { name: "Technology & Startups", href: "/industries/technology-startups" },
+        ]}
+      />
+      <IndustryDetail
       eyebrow="Technology & Startups"
       title="Build technology that"
       highlightedTitle="can grow with the business."
@@ -122,6 +131,7 @@ export default function TechnologyStartupsPage() {
       ctaEyebrow="Technology & Startups"
       ctaTitle="Build the technical foundation for what comes next."
       ctaDescription="Whether you are launching a new product, scaling an existing platform, modernizing architecture, improving engineering delivery, or strengthening cloud and data foundations, we can help design and build the next stage."
-    />
+      />
+    </>
   );
 }

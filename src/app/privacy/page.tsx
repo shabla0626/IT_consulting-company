@@ -1,4 +1,20 @@
+import type { Metadata } from "next";
+
 import PageIntro from "@/components/shared/PageIntro";
+import { siteConfig } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    `Privacy information for the ${siteConfig.name} website.`,
+  alternates: {
+    canonical: "/privacy",
+  },
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 export default function PrivacyPage() {
   return (

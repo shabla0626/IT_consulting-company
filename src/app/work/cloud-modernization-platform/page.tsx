@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 import CaseStudyDetail from "@/components/work/detail/CaseStudyDetail";
 import { siteConfig } from "@/lib/site";
 
@@ -46,7 +47,15 @@ export const metadata: Metadata = {
 
 export default function CloudModernizationPlatformPage() {
   return (
-    <CaseStudyDetail
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Work", href: "/work" },
+          { name: "Cloud Modernization & Platform Engineering", href: "/work/cloud-modernization-platform" },
+        ]}
+      />
+      <CaseStudyDetail
       eyebrow="Representative Engagement · Cloud Modernization"
       title="Modernizing a platform for"
       highlightedTitle="reliability, delivery, and scale."
@@ -305,6 +314,7 @@ export default function CloudModernizationPlatformPage() {
       ctaEyebrow="Cloud Modernization"
       ctaTitle="Modernization starts with understanding what is actually holding the platform back."
       ctaDescription="If your organization is dealing with aging applications, cloud complexity, delivery friction, reliability challenges, or platform constraints, we can start by assessing the current environment and defining a practical modernization path."
-    />
+      />
+    </>
   );
 }

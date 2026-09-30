@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 import SolutionDetail from "@/components/solutions/detail/SolutionDetail";
 
 import { siteConfig } from "@/lib/site";
@@ -37,7 +38,15 @@ export const metadata: Metadata = {
 
 export default function CybersecurityPage() {
   return (
-    <SolutionDetail
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Solutions", href: "/solutions" },
+          { name: "Cybersecurity", href: "/solutions/cybersecurity" },
+        ]}
+      />
+      <SolutionDetail
       eyebrow="Cybersecurity"
       title="Build security into"
       highlightedTitle="the technology itself."
@@ -120,6 +129,7 @@ export default function CybersecurityPage() {
       ctaEyebrow="Strengthen Your Systems"
       ctaTitle="Have a security challenge connected to your technology?"
       ctaDescription="We can help understand the technical risk and design security improvements that fit the way your systems and teams actually work."
-    />
+      />
+    </>
   );
 }

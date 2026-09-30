@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 import IndustryDetail from "@/components/industries/detail/IndustryDetail";
 import { siteConfig } from "@/lib/site";
 
@@ -35,7 +36,15 @@ export const metadata: Metadata = {
 
 export default function RetailCommercePage() {
   return (
-    <IndustryDetail
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Industries", href: "/industries" },
+          { name: "Retail & Commerce", href: "/industries/retail-commerce" },
+        ]}
+      />
+      <IndustryDetail
       eyebrow="Retail & Commerce"
       title="Build commerce experiences"
       highlightedTitle="that adapt as customers do."
@@ -122,6 +131,7 @@ export default function RetailCommercePage() {
       ctaEyebrow="Retail & Commerce"
       ctaTitle="Create commerce technology ready for continuous change."
       ctaDescription="Whether you are modernizing a commerce platform, improving the customer experience, connecting fragmented systems, or strengthening engineering capabilities, we can help design and deliver the technical path forward."
-    />
+      />
+    </>
   );
 }

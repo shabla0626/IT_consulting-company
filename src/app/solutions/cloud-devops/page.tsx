@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 import SolutionDetail from "@/components/solutions/detail/SolutionDetail";
 
 import { siteConfig } from "@/lib/site";
@@ -36,7 +37,15 @@ export const metadata: Metadata = {
 
 export default function CloudDevOpsPage() {
   return (
-    <SolutionDetail
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Solutions", href: "/solutions" },
+          { name: "Cloud & DevOps", href: "/solutions/cloud-devops" },
+        ]}
+      />
+      <SolutionDetail
       eyebrow="Cloud & DevOps"
       title="Build cloud platforms"
       highlightedTitle="teams can rely on."
@@ -70,6 +79,7 @@ export default function CloudDevOpsPage() {
       ctaEyebrow="Modernize Your Platform"
       ctaTitle="Need a cloud platform that helps engineering move faster?"
       ctaDescription="We can help assess your current environment, identify bottlenecks, and design a practical modernization path."
-    />
+      />
+    </>
   );
 }

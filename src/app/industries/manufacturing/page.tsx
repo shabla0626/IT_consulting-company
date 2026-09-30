@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 import IndustryDetail from "@/components/industries/detail/IndustryDetail";
 import { siteConfig } from "@/lib/site";
 
@@ -35,7 +36,15 @@ export const metadata: Metadata = {
 
 export default function ManufacturingPage() {
   return (
-    <IndustryDetail
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Industries", href: "/industries" },
+          { name: "Manufacturing", href: "/industries/manufacturing" },
+        ]}
+      />
+      <IndustryDetail
       eyebrow="Manufacturing"
       title="Connect technology with"
       highlightedTitle="modern industrial operations."
@@ -122,6 +131,7 @@ export default function ManufacturingPage() {
       ctaEyebrow="Manufacturing"
       ctaTitle="Build a stronger digital foundation for industrial operations."
       ctaDescription="Whether you are modernizing applications, connecting fragmented systems, improving data foundations, or strengthening engineering capabilities, we can help define and deliver the right technical approach."
-    />
+      />
+    </>
   );
 }
