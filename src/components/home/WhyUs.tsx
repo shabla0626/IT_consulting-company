@@ -33,7 +33,7 @@ export default function WhyUs() {
         <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:gap-16">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-sm">
-              Why Nexora
+              Why CoVera
             </p>
 
             <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
@@ -94,7 +94,7 @@ export default function WhyUs() {
 
             <div>
               <p className="text-sm leading-7 text-slate-300 sm:text-base">
-                We are not positioning Nexora as a company that simply supplies
+                We are not positioning CoVera as a company that simply supplies
                 developers. The goal is to bring together experienced,
                 multidisciplinary teams that can understand the problem, make
                 sound technology decisions, and help carry those decisions

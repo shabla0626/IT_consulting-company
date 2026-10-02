@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ArrowIcon from "@/components/shared/ArrowIcon";
 
 type DetailItem =
   | string
@@ -476,12 +477,10 @@ export default function CaseStudyDetail(props: CaseStudyDetailProps) {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
                   href="/contact"
-                  className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200 sm:w-auto"
+                  className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200 sm:w-auto"
                 >
                   Talk to an Expert
-                  <span className="ml-2" aria-hidden="true">
-                    →
-                  </span>
+                  <ArrowIcon className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
                 </Link>
 
                 <Link

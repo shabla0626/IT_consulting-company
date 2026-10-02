@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" fill="none">
+  <g transform="translate(0 12)">
+    <path d="M108 4c3-3 7-3 11 0l49 32c8 5 12 11 12 19v67c0 6-4 8-9 5l-52-33c-7-5-11-11-11-19V12c0-3 0-6 0-8Z" fill="#4F25F5"/>
+    <path d="M10 105c0-7 4-13 11-16l76-39c7-4 12-1 12 7v39c0 8-4 13-12 17l-76 2c-7 0-11-3-11-10Z" fill="#111D32"/>
+    <path d="M190 108c0-8 4-14 11-18l70-43c7-4 12-1 12 7v40c0 8-4 14-11 18l-70 42c-7 4-12 1-12-7v-39Z" fill="#1755B5"/>
+    <path d="M93 147c0-8 4-14 10-18l14-9 61 39c7 5 11 11 11 19v61c0 7-5 9-11 5l-73-49c-7-5-12-11-12-19v-29Z" fill="#16B5C8"/>
+  </g>
+  <text x="335" y="165" fill="#111D32" font-family="Arial, Helvetica, sans-serif" font-size="132" font-weight="600" letter-spacing="-5">CoVera</text>
+</svg>

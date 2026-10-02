@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ArrowIcon from "@/components/shared/ArrowIcon";
 import {
   useEffect,
   useRef,
@@ -181,28 +183,18 @@ export default function Header() {
           {/* Brand */}
           <Link
             href="/"
-            aria-label="Nexora home"
+            aria-label="CoVera home"
             onClick={closeMobileMenu}
-            className="group flex min-h-11 items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-100"
+            className="group flex min-h-11 shrink-0 items-center rounded-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-100"
           >
-            <span
-              className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-slate-950 text-sm font-bold text-white shadow-sm"
-              aria-hidden="true"
-            >
-              N
-
-              <span className="absolute bottom-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-indigo-400" />
-            </span>
-
-            <span className="flex flex-col">
-              <span className="text-base font-semibold leading-none tracking-tight text-slate-950">
-                Nexora
-              </span>
-
-              <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.17em] text-slate-400">
-                Consulting
-              </span>
-            </span>
+            <Image
+              src="/covera-logo.svg"
+              alt=""
+              width={180}
+              height={48}
+              priority
+              className="h-12 w-[180px]"
+            />
           </Link>
 
           {/* Desktop navigation */}
@@ -290,16 +282,11 @@ export default function Header() {
                   ? "page"
                   : undefined
               }
-              className="inline-flex min-h-11 items-center justify-center rounded-full bg-indigo-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-200"
+              className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-indigo-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-200"
             >
               Talk to an Expert
 
-              <span
-                className="ml-2"
-                aria-hidden="true"
-              >
-                →
-              </span>
+              <ArrowIcon className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
 
@@ -461,16 +448,11 @@ export default function Header() {
                 onClick={
                   closeMobileMenu
                 }
-                className="inline-flex min-h-12 items-center justify-center rounded-full bg-indigo-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-200"
+                className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-indigo-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-200"
               >
                 Talk to an Expert
 
-                <span
-                  className="ml-2"
-                  aria-hidden="true"
-                >
-                  →
-                </span>
+                <ArrowIcon className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
 

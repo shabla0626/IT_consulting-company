@@ -6,12 +6,13 @@ import InvalidApplicationState from "@/components/careers/application/InvalidApp
 
 import { jobs } from "@/data/jobs";
 import type { Job } from "@/data/jobs";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Apply for a Role",
 
   description:
-    "Submit your application for an open role at Nexora Consulting.",
+    `Submit your application for an open role at ${siteConfig.name}.`,
 
   robots: {
     index: false,

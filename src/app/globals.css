@@ -16,6 +16,20 @@ body {
 
 body {
   margin: 0;
+  font-family: var(--font-body), sans-serif;
+}
+
+h1,
+h2 {
+  font-family: var(--font-heading), var(--font-body), sans-serif;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.055) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 88%);
 }
 
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Manrope, Space_Grotesk } from "next/font/google";
 
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
@@ -6,6 +7,18 @@ import JsonLd from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site";
 
 import "./globals.css";
+
+const bodyFont = Manrope({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const headingFont = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -69,7 +82,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${bodyFont.variable} ${headingFont.variable}`}>
         <JsonLd
           data={{
             "@context": "https://schema.org",
