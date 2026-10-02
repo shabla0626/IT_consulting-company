@@ -98,7 +98,7 @@ export default function ContactNextSteps() {
 
             <p className="min-w-0 text-base leading-7 text-slate-300">
               A useful initial conversation should help determine the real
-              problem, the level of support required, and whether Nexora is the
+              problem, the level of support required, and whether CoVera is the
               right fit. The next step should follow from that understanding,
               not from a preset engagement model.
             </p>

@@ -25,15 +25,14 @@ const deliveryStages = [
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-slate-950 text-white">
-      {/* Controlled background accents */}
+    <section className="relative isolate overflow-hidden bg-[#10211c] text-white">
       <div
-        className="pointer-events-none absolute -right-32 -top-32 h-80 w-80 rounded-full bg-indigo-500/10 blur-3xl sm:h-96 sm:w-96"
+        className="hero-grid pointer-events-none absolute inset-0 opacity-80"
         aria-hidden="true"
       />
 
       <div
-        className="pointer-events-none absolute -bottom-40 left-0 h-80 w-80 rounded-full bg-cyan-500/5 blur-3xl sm:left-1/4 sm:h-96 sm:w-96"
+        className="pointer-events-none absolute right-[-9rem] top-28 h-72 w-72 rounded-full border border-lime-200/10 sm:right-[-6rem] sm:top-24 sm:h-96 sm:w-96"
         aria-hidden="true"
       />
 
@@ -41,13 +40,13 @@ export default function Hero() {
         <div className="grid gap-14 lg:grid-cols-[1.06fr_0.94fr] lg:items-center lg:gap-20">
           {/* Main message */}
           <div className="min-w-0">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-300 sm:text-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-lime-200 sm:text-sm">
               Technology Consulting
             </p>
 
-            <h1 className="mt-5 max-w-4xl text-[2.5rem] font-semibold leading-[1.05] tracking-[-0.035em] text-white sm:text-5xl sm:leading-[1.04] lg:text-6xl xl:text-7xl">
+            <h1 className="mt-5 max-w-4xl text-[2.5rem] font-medium leading-[1.05] text-white sm:text-5xl sm:leading-[1.04] lg:text-5xl xl:text-6xl">
               Build better technology.
-              <span className="mt-1 block text-slate-400 sm:mt-2">
+              <span className="mt-1 block text-lime-100/75 sm:mt-2">
                 Move business forward.
               </span>
             </h1>
@@ -67,7 +66,7 @@ export default function Hero() {
             <div className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center">
               <Link
                 href="/contact"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-white/20 sm:w-auto"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-lime-200 px-6 py-3.5 text-sm font-semibold text-[#10211c] transition hover:bg-lime-100 focus:outline-none focus:ring-4 focus:ring-lime-100/30 sm:w-auto"
               >
                 Talk to an Expert
                 <span className="ml-2" aria-hidden="true">
@@ -77,7 +76,7 @@ export default function Hero() {
 
               <Link
                 href="/work"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10 focus:outline-none focus:ring-4 focus:ring-white/10 sm:w-auto"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-lime-100/60 hover:bg-white/10 focus:outline-none focus:ring-4 focus:ring-white/10 sm:w-auto"
               >
                 Explore Our Work
               </Link>
@@ -110,7 +109,7 @@ export default function Hero() {
               <div className="border-b border-white/10 px-6 py-5 sm:px-7">
                 <div className="flex items-center justify-between gap-4">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-indigo-300">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-lime-200">
                       How We Deliver
                     </p>
 
@@ -120,7 +119,7 @@ export default function Hero() {
                   </div>
 
                   <span
-                    className="hidden h-2 w-2 rounded-full bg-indigo-400 sm:block"
+                    className="hidden h-2 w-2 rounded-full bg-lime-200 sm:block"
                     aria-hidden="true"
                   />
                 </div>
@@ -132,7 +131,7 @@ export default function Hero() {
                     key={stage.number}
                     className="grid grid-cols-[42px_1fr] gap-4 px-6 py-5 sm:grid-cols-[54px_1fr] sm:px-7 sm:py-6"
                   >
-                    <span className="pt-0.5 text-xs font-semibold tracking-[0.16em] text-indigo-300">
+                    <span className="pt-0.5 text-xs font-semibold tracking-[0.16em] text-lime-200">
                       {stage.number}
                     </span>
 

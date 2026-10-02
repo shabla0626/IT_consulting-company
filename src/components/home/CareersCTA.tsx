@@ -37,7 +37,7 @@ export default function CareersCTA() {
             </h2>
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300">
-              Nexora is being built as a place where experienced practitioners
+              CoVera is being built as a place where experienced practitioners
               can solve difficult technology problems, learn across
               disciplines, take meaningful ownership, and keep developing
               their craft.

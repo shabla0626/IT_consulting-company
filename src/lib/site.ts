@@ -1,6 +1,6 @@
 export const siteConfig = {
-  name: "Nexora Consulting",
-  shortName: "Nexora",
+  name: "CoVera",
+  shortName: "CoVera",
 
   description:
     "Technology consulting across software engineering, AI and data, cloud and DevOps, cybersecurity, and technology transformation.",

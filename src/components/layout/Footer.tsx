@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import { siteConfig } from "@/lib/site";
 
 const footerNavigation = [
   {
@@ -34,7 +36,7 @@ const footerNavigation = [
   {
     title: "Company",
     links: [
-      { label: "About Nexora", href: "/company" },
+      { label: "About CoVera", href: "/company" },
       { label: "Careers", href: "/careers" },
       { label: "Open Roles", href: "/careers/jobs" },
       { label: "Contact", href: "/contact" },
@@ -54,27 +56,16 @@ export default function Footer() {
           <div className="max-w-md">
             <Link
               href="/"
-              aria-label="Nexora home"
-              className="inline-flex items-center gap-3"
+              aria-label="CoVera home"
+              className="inline-flex items-center"
             >
-              <span className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl bg-white text-sm font-bold text-slate-950">
-                N
-
-                <span
-                  className="absolute bottom-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-indigo-500"
-                  aria-hidden="true"
-                />
-              </span>
-
-              <span className="flex flex-col">
-                <span className="text-lg font-semibold leading-none tracking-tight text-white">
-                  Nexora
-                </span>
-
-                <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-                  Consulting
-                </span>
-              </span>
+              <Image
+                src="/covera-logo-reversed.svg"
+                alt=""
+                width={190}
+                height={51}
+                className="h-[51px] w-[190px]"
+              />
             </Link>
 
             <p className="mt-6 text-base leading-7 text-slate-400">
@@ -193,7 +184,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="flex flex-col gap-5 py-8 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {currentYear} Nexora Consulting. All rights reserved.
+            © {currentYear} {siteConfig.name}. All rights reserved.
           </p>
 
           <p>

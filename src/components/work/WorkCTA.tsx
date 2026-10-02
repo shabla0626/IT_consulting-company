@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ArrowIcon from "@/components/shared/ArrowIcon";
 
 export default function WorkCTA() {
   return (
@@ -57,12 +58,10 @@ export default function WorkCTA() {
               <div className="mt-7 flex flex-col gap-3">
                 <Link
                   href="/contact"
-                  className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-indigo-800 transition hover:bg-indigo-50 focus:outline-none focus:ring-4 focus:ring-white/30"
+                  className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-indigo-800 transition hover:bg-indigo-50 focus:outline-none focus:ring-4 focus:ring-white/30"
                 >
                   Talk to an Expert
-                  <span className="ml-2" aria-hidden="true">
-                    →
-                  </span>
+                  <ArrowIcon className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
                 </Link>
 
                 <Link
